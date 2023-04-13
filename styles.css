@@ -3,20 +3,20 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Kumbh Sans', sans-serif;
-}
-.ctn{
+  }
+  .ctn{
     padding: 8px 15px;
     background-color: #516DF7;
     border-radius: 30px;
     color: whitesmoke;
-}
-body{
+  }
+  body{
     background: url("image/background.jpg");
     background-size: cover;
     height: 100vh;
     background-position: center;
-}
-header {
+  }
+  header {
     width: 100%;
     height: 80vh;
     background-image: url("image/header.jpg");
@@ -26,8 +26,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.header {
+  }
+  .header {
     background-image: url("image/header2.jpg");
     background-size: cover;
     background-position: center;
@@ -35,30 +35,30 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.header-content{
+  }
+  .header-content{
     margin-bottom: 100px;
     text-align: center;
-}
-.header-content h2{
+  }
+  .header-content h2{
     font-size: 4vmin;
-}
-.header-content h1{
+  }
+  .header-content h1{
     font-size: 8vmin;
-}
-*{
+  }
+  *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Kumbh Sans', sans-serif;
-}
-body{
+  }
+  body{
     background: url("image/background.jpg");
     background-size: cover;
     height: 100vh;
     background-position: center;
-}
-nav{
+  }
+  nav{
     width: 100%;
     height: 100px;
     display: flex;
@@ -68,25 +68,25 @@ nav{
     z-index: 99;
     box-shadow: 0 0 10px #000;
     background: rgba(0,0,0,0.5);
-}
-#chk1{
+  }
+  #chk1{
     display: none;
-}
-i{
+  }
+  i{
     color: whitesmoke;
     cursor: pointer;
-}
-nav .logo{
+  }
+  nav .logo{
     flex: 1;
     color: whitesmoke;
     margin-left: 50px;
     text-transform: uppercase;
-}
-nav .search-box{
+  }
+  nav .search-box{
     flex: 1;
     position: relative;
-}
-.search-box input{
+  }
+  .search-box input{
     width: 100%;
     height: 40px;
     border: none;
@@ -96,8 +96,8 @@ nav .search-box{
     color: gray;
     font-size: 16px;
     text-align: center;
-}
-.search-box button{
+  }
+  .search-box button{
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -108,83 +108,59 @@ nav .search-box{
     right: 0;
     transform: scale(0.9);
     background: lightblue;
-}
-nav ul{
+  }
+  nav ul{
     flex: 2;
     display: flex;
     justify-content: space-evenly;
-}
-nav ul li{
+  }
+  nav ul li{
     list-style: none;
-}
-nav ul li a{
+  }
+  nav ul li a{
     text-decoration: none;
     color: whitesmoke;
     font-weight: 600;
     text-transform: uppercase;
     padding: 10px 15px;
-}
-nav ul li a:hover{
+  }
+  nav ul li a:hover{
     border-bottom: 2px solid cadetblue;
-}
-nav .menu{
+  }
+  nav .menu{
     font-size: 2.5em;
     display: none;
-}
-a{
+  }
+  a{
     text-decoration: none;
     color: darkmagenta;
-}
-body , html{
+  }
+  body , html{
     overflow-x: hidden ;
-}
-section{
+  }
+  section{
     width: 80%;
     margin: 80px auto; /*i gore i dole*/
-}
-.tittle{
+  }
+  .tittle{
     text-align: center;
     font-size: 4vmin;
-    color: darkmagenta;
+    color: black;
     padding-bottom: 20px;
-}
-.row{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-around;
-}
-/* .row .collum img{
-    width: 80%;
-    height: 200px;
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
-} */
-.row .collum{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.events .row{
-    margin-top: 50px;
-}
-h4{
+  }
+  h4{
     font-size: 3vmin;
     color: black;
     margin: 20px auto;
-}
-p{
+  }
+  p{
     color: grey;
     padding: 0px 4px;
-}
-.events .ctn{
-    margin-top: 30px;
-}
-p{
+  }
+  p{
     text-align: center;
-}
-/* @media only screen and (max-width: 900px) {
+  }
+  /* @media only screen and (max-width: 900px) {
     .logo{
         position: absolute;
         top: 30px;
@@ -234,70 +210,130 @@ p{
     .collum img{
         max-width: 90%;
     }
-} */
-.card {
+  } */
+  .card {
     background-color: whitesmoke;
     width: 18rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.card ul{
+  }
+  .row{
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: content;
+    display: inline-block;
+    align-items: stretch;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  
+  .card ul{
     list-style: none;
-}  
-.card img {
+  }  
+  .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-}
-.list-group-item {
+  }
+  .list-group-item {
     color: gray;
     text-align: center;
     padding: 0.5rem 1rem;
     border: none;
     border-top: 1px solid #ccc;
-}
-.card-body {
+  }
+  .card-body {
     text-align: center;
     padding: 1rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.footer{
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: calc(33.33% - 20px);
+    margin-bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card-content h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .card-content p {
+    font-size: 0.8em;
+    color: gray;
+    margin-bottom: 10px;
+  }
+  
+  .card-content a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #516DF7;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-content a:hover {
+    background-color: #4655C9;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .footer{
     width: 100%;
     min-height: 100px;
     padding: 20px 80px;
     margin: 0;
     background-color: #484872;
     text-align: center;
-}
-.footer p{
+  }
+  .footer p{
     color: whitesmoke;
     margin: 20px auto;
-
-}
-@media(max-width : 1000px){
+  
+  }
+  @media(max-width : 1000px){
     .search-box button{
         position: absolute;
     }
@@ -320,8 +356,8 @@ p{
     #chk1:checked ~ ul{
         right: 0;
     }
-}
-@media(max-width : 600px){
+  }
+  @media(max-width : 600px){
     nav .logo{
         font-size: 10px;
         margin-left: 8px;
@@ -329,4 +365,4 @@ p{
     nav ul{
         width: 100%;
     }
-}
+  }
