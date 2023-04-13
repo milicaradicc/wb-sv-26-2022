@@ -40,37 +40,89 @@ header {
 .header-content h1{
     font-size: 8vmin;
 }
-.navigation-bar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #d58eaa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.navbar-logo img {
-    height: 50px;
-  }
-.navigation-links{
-    display: flex;
-    align-items: center;
-    list-style: none;
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
 }
-.navigation-links li{
-    margin: 0 20px;
+body{
+    background: url("image/background.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
 }
-
-.menu-button{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
+nav{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 99;
+    box-shadow: 0 0 10px #000;
+    background: rgba(0,0,0,0.5);
+}
+#chk1{
+    display: none;
+}
+i{
+    color: whitesmoke;
     cursor: pointer;
+}
+nav .logo{
+    flex: 1;
+    color: whitesmoke;
+    margin-left: 50px;
+    text-transform: uppercase;
+}
+nav .search-box{
+    flex: 1;
+    position: relative;
+}
+.search-box input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+    border-radius: 30px;
+    color: gray;
+    font-size: 16px;
+    text-align: center;
+}
+.search-box button{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    position: absolute;
+    top:0;
+    right: 0;
+    transform: scale(0.9);
+    background: lightblue;
+}
+nav ul{
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 15px;
+}
+nav ul li a:hover{
+    border-bottom: 2px solid cadetblue;
+}
+nav .menu{
+    font-size: 2.5em;
     display: none;
 }
 a{
@@ -126,10 +178,7 @@ p{
 p{
     text-align: center;
 }
-@media only screen and (max-width: 900px) {
-    .navigation-bar{
-        padding: 0;
-    }
+/* @media only screen and (max-width: 900px) {
     .logo{
         position: absolute;
         top: 30px;
@@ -140,8 +189,8 @@ p{
         width: 100%;
         height: 100vh;
         justify-content: center;
-        background-color:#d58eaa;
-        /* kako bi nestalo */
+        background-color: transparent;
+        /* kako bi nestalo 
         margin-top: -900px; 
         transition: all 0.3s ease;
     }
@@ -164,7 +213,7 @@ p{
         display: flex;
         justify-content: space-between;
         padding: 20px;
-        background-color: #d58eaa;
+        background-color:transparent;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .navbar-logo img {
@@ -179,7 +228,7 @@ p{
     .collum img{
         max-width: 90%;
     }
-}
+} */
 .footer{
     width: 100%;
     min-height: 100px;
@@ -192,4 +241,37 @@ p{
     color: whitesmoke;
     margin: 20px auto;
 
+}
+@media(max-width : 1000px){
+    .search-box button{
+        position: absolute;
+    }
+    nav ul{
+        position: fixed;
+        top: 100px;
+        right: -100%;
+        background: rgba(0,0,0,0.5);
+        height: 700px;
+        width: 50%;
+        flex-direction: column;
+        align-items: center;
+        transition: right 0.5s linear;
+    }
+    nav .menu{
+        display: block;
+        width: 100px;
+        text-align: center;
+    }
+    #chk1:checked ~ ul{
+        right: 0;
+    }
+}
+@media(max-width : 600px){
+    nav .logo{
+        font-size: 10px;
+        margin-left: 8px;
+    }
+    nav ul{
+        width: 100%;
+    }
 }
