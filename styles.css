@@ -113,9 +113,15 @@
     flex: 2;
     display: flex;
     justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
   }
   nav ul li{
     list-style: none;
+    margin: 0;
+    position: relative;
   }
   nav ul li a{
     text-decoration: none;
@@ -126,6 +132,25 @@
   }
   nav ul li a:hover{
     border-bottom: 2px solid cadetblue;
+  }
+  nav ul li ul{
+    text-align: center;
+    background-size: 40px;
+    width: 120%;
+    background-color: lightgrey;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    border-bottom: none;
+  }
+  nav ul li:hover ul{
+    display: inline;
+  }
+  nav ul li ul a:hover{
+    border-bottom: none;
   }
   nav .menu{
     font-size: 2.5em;
