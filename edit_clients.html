@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>PACK & GO</title>
+</head>
+<body>
+    <nav>
+        <!-- search bar -->
+        <input type="checkbox" name="" id="chk1">
+        <div class="logo"><h1>PACK & GO</h1></div>
+        <div class="search-box">
+            <form action="">
+              <input type="text" name="search" id="srch" placeholder="Search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- menu -->
+        <ul>
+            <li><a href="#">Pocetna</a></li>
+            <li><a href="#">Agencije</a></li>
+            <li>
+            <a><label for="show" class="show-btn">Prijava</label></a>
+            </li>
+          <li><a href="#">Greska</a></li>
+          <li><a href="#">Izmena</a>
+            <ul>
+              <li><a href="edit_clients.html">Izmena klijenata</a></li>
+              <li><a href="#">Izmena agencija</a></li>
+              <li><a href="edit_destinations.html">Izmena destinacija</a></li>
+            </ul>
+          </li>
+          <!-- media icons :D -->
+          <li>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+        <div class="menu">
+          <label for="chk1">
+            <i class="fa fa-bars"></i>
+          </label>
+        </div>
+      </nav>
+
+      <div class="center">
+        <input type="checkbox" id="show">
+        <div class="container">
+           <label for="show" class="close-btn fas fa-times" title="close"></label>
+           <div class="text">Ulogujte se🌴</div>
+           <form action="#">
+              <div class="data">
+                 <label>Telefon ili Email: </label>
+                 <input type="text" required>
+              </div>
+              <div class="data">
+                 <label>Lozinka: </label>
+                 <input type="password" required>
+              </div>
+              <div class="btn">
+                 <div class="inner"></div>
+                 <button type="submit">login</button>
+              </div>
+              <div class="signup-link">
+                 Nemate nalog? <a><label for="show2" class="show-btn" href="#">Registrujte se!</label></a>
+              </div>
+           </form>
+        </div>
+     </div>
+
+     <div class="center">
+        <input type="checkbox" id="show2">
+        <div class="container">
+           <label for="show2" class="close-btn fas fa-times" title="close"></label>
+           <div class="text">
+              Kreirajte nalog!
+           </div>
+           <form action="#">
+               <div class="data">
+                   <label>Ime: </label>
+                   <input type="text" required>
+                </div>
+                <div class="data">
+                   <label>Prezime: </label>
+                   <input type="text" required>
+                </div>
+                <div class="data">
+                   <label>Email: </label>
+                   <input type="email" required>
+                </div>
+                <div class="data">
+                   <label>Datum rodjenja: </label>
+                   <input type="date" required>
+                </div>
+                <div class="data">
+                   <label>Adresa:</label>
+                   <input type="data" required>
+                </div>
+               <div class="data">
+                   <label>Broj telefona: </label>
+                   <input type="data" required>
+               </div>
+               <div class="data">
+                   <label>Korisnicko ime: </label>
+                   <input type="data" required>
+               </div>
+               <div class="data">
+                   <label>Lozinka: </label>
+                   <input type="password" required>
+               </div>
+              <div class="btn">
+                 <div class="inner"></div>
+                 <button type="submit">Register</button>
+              </div>
+           </form>
+        </div>
+     </div>
+    <header style="color: whitesmoke;">
+        <div class="header-content">
+            <h2>OVDE LETO JE TRIPUT VRELIJE</h2>
+            <div class="line"></div>
+            <h1 id="main-title">PACK & GO</h1>
+        </div>
+    </header>
+
+
+    <form class="edit">
+        <label for="dest">Izaberite korisnika za izmenu:</label>
+
+        <select name="dest" id="dest">
+          <option value="M">marko</option>
+          <option value="J">jovana</option>
+          <option value="P">petar</option>
+        </select>
+        <div class="data">
+            <label>Korisnicko ime: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Lozinka: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Ime: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Prezime: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Email: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Broj telefona: </label>
+               <input type="text">
+        </div>
+        <div class="data">
+            <label>Godina rodjenja: </label>
+               <input type="date">
+        </div>
+        <div class="data">
+            <label>Adresa: </label>
+               <input type="text">
+        </div>
+        <div class="btn" style="width: 10%;">
+            <div class="inner"></div>
+            <button type="submit">Sacuvaj</button>
+         </div>
+    </form>
+
+    <table>
+		<thead>
+			<tr>
+				<th>Korisnicko ime</th>
+				<th>Lozinka</th>
+				<th>Ime</th>
+				<th>Prezime</th>
+				<th>Email</th>
+				<th>Datum rodjenja</th>
+                <th>Adresa</th>
+				<th>Telefon</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td data-label="Korisnicko ime">jovana</td>
+				<td data-label="Lozinka">petar123</td>
+				<td data-label="Ime">Petar</td>
+				<td data-label="Prezime">Petrovic</td>
+				<td data-label="Email">ppetrovic@webd.com</td>
+				<td data-label="Datum rodjenja">1994-10-22</td>
+				<td data-label="Telefon">061456456</td>
+                <td data-label="Adresa">Gogoljeva 39, Novi Sad,21000</td>
+            </tr>
+			<tr>
+				<td data-label="Korisnicko ime">jovana</td>
+				<td data-label="Lozinka">jovana123</td>
+				<td data-label="Ime">Jovana</td>
+				<td data-label="Prezime">Jovanovic</td>
+				<td data-label="Email">jjovanovic@webd.com</td>
+				<td data-label="Datum rodjenja">1982-05-05</td>
+				<td data-label="Telefon">062321321</td>
+                <td data-label="Adresa">Jug Bogdana 14, Zrenjanin,350902</td>
+			</tr>
+                <td data-label="Korisnicko ime">marko</td>
+                <td data-label="Lozinka">marko123</td>
+                <td data-label="Ime">Marko</td>
+                <td data-label="Prezime">Markovic</td>
+                <td data-label="Email">mmarkovic@webd.com</td>
+                <td data-label="Datum rodjenja">1990-09-17</td>
+                <td data-label="Telefon">063876876</td>  
+                <td data-label="Adresa">Cara Lazara 9a, Beograd,11000</td>  
+            </tr>
+            </tbody>
+            </table>
+    <section class="footer">
+        <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
+    </section>
+</body>
+</html>
