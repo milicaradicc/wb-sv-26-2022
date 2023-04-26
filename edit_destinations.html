@@ -133,15 +133,15 @@
 
 
     <form class="edit">
-        <label for="dest">Izaberite destinaciju za izmenu:</label>
-
-        <select name="dest" id="dest">
-         <option selected>Izaberite destinaciju</option>
-          <option value="Sitonija">Sitonija</option>
-          <option value="Atos">Atos</option>
-          <option value="Platamons">Platamons</option>
-          <option value="Nea Vrasna">Nea Vrasna</option>
-          <option value="Sart">Sart</option>
+        <h2>Dodajte novu destinaciju</h2>
+         <br>
+         <label>Izaberite agenciju kojoj dodajete destinaciju</label>
+         <select name="dest" id="dest">
+            <option value="M">Aero-turs</option>
+            <option value="J">Air Serbia</option>
+            <option value="P">Bavka tours</option>
+            <option value="P">Bečej prevoz</option>
+            <option value="P">Big Blue</option>
         </select>
         <div class="data">
             <label>Naziv destinacije: </label>
@@ -167,7 +167,7 @@
             <label>Max osoba: </label>
                <input type="text">
         </div>
-        <div class="btn" style="width: 10%;">
+        <div class="btn" style="width: 100px; align-self: center;">
             <div class="inner"></div>
             <button type="submit">Sacuvaj</button>
          </div>
@@ -182,6 +182,8 @@
 				<th>Prevoz</th>
 				<th>Cena</th>
 				<th>Max osoba</th>
+            <th>Edit</th>
+            <th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -192,7 +194,9 @@
 				<td data-label="Prevoz">autobus</td>
 				<td data-label="Cena">21545</td>
 				<td data-label="Max osoba">52</td>
-            </tr>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
 			<tr>
 				<td data-label="Naziv destinacije">Atos</td>
 				<td data-label="Opis">Atos, najistočnije poluostrvo Halkidikija, možda najmanje posećen, ali zato nedovoljno istražen i veoma atraktivan. Ovaj neotkriven raj je za miran i bezbrižan odmor. Poluostrvo je šumovito, a pored toga ističe se po planini Atos, čiji je najviši vrh 2033 m. Udaljenost od Beograda je oko 750 km, a od Soluna oko 100 km. Prema grčkoj mitologiji giganti su nastanjivali ovaj prostor, a po jednom od njih ovaj prst je dobio naziv.</td>
@@ -200,6 +204,8 @@
 				<td data-label="Prevoz">autobus</td>
 				<td data-label="Cena">19787</td>
 				<td data-label="Max osoba">44</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
 			</tr>
 			<tr>
 				<td data-label="Naziv destinacije">Platamons</td>
@@ -208,6 +214,8 @@
 				<td data-label="Prevoz">autobus</td>
 				<td data-label="Cena">24784</td>
 				<td data-label="Max osoba">42</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
             </tr>
             <tr>
             <td data-label="Naziv destinacije">Nea Vrasna</td>
@@ -216,6 +224,8 @@
             <td data-label="Prevoz">autobus</td>
             <td data-label="Cena">18999</td>
             <td data-label="Max osoba">40</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
             </tr>
             <tr>
             <td data-label="Naziv destinacije">Sarti</td>
@@ -224,6 +234,8 @@
             <td data-label="Prevoz">autobus</td>
             <td data-label="Cena">24784</td>
             <td data-label="Max osoba">41</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
             </tr>
             </tbody>
             </table>

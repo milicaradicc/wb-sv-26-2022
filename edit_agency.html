@@ -133,18 +133,10 @@
 
 
     <form class="edit">
-        <label for="dest">Izaberite agenciju za izmenu:</label>
-
-        <select name="dest" id="dest">
-          <option selected>Izaberite agenciju</option>
-          <option value="M">Aero-turs</option>
-          <option value="J">Air Serbia</option>
-          <option value="P">Bavka tours</option>
-          <option value="P">Bečej prevoz</option>
-          <option value="P">Big Blue</option>
-        </select>
+        <label for="dest"><h2>Dodajte novu agenciju</h2></label>
+        <br>
         <div class="data">
-            <label>Naziv: </label>
+            <label>Ime agencije: </label>
                <input type="text">
         </div>
         <div class="data">
@@ -153,7 +145,7 @@
         </div>
         <div class="data">
             <label>Godina: </label>
-               <input type="text">
+               <input type="number">
         </div>
         <div class="data">
             <label>Broj telefona: </label>
@@ -161,63 +153,75 @@
         </div>
         <div class="data">
             <label>Email: </label>
-               <input type="text">
+               <input type="email">
         </div>
-        <div class="btn" style="width: 10%;">
+        <div class="btn" style="width: 100px; align-self: center;">
          <div class="inner"></div>
          <button type="submit">Sacuvaj</button>
       </div>
     </form>
 
     <table>
-		<thead>
-			<tr>
-				<th>Naziv</th>
-				<th>Adresa</th>
-				<th>Godina</th>
-				<th>Godina</th>
-				<th>Email</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td data-label="Naziv">Aero-turs</td>
-				<td data-label="Adresa">Obrenovićeva bb T.C. Gorča,Beograd,11000</td>
-				<td data-label="Godina">2011</td>
-				<td data-label="Email">aero@mail.com</td>
-				<td data-label="Telefon">011/7872-78423</td>
-            </tr>
-			<tr>
-				<td data-label="Naziv">Air Serbia</td>
-				<td data-label="Adresa">Bulevar umetnosti 16, Beograd, 11000</td>
-				<td data-label="Godina">2005</td>
-				<td data-label="Email">airserbia381@mail.com</td>
-				<td data-label="Telefon">011/3232-784323</td>
-			</tr>
-            <tr>
-                <td data-label="Naziv">Bavka tours</td>
-                <td data-label="Adresa">Gornji Bunibrod bb, Lazarevac, 16221</td>
-                <td data-label="Godina">1990</td>
-                <td data-label="Email">bavka@mail.com</td>
-                <td data-label="Telefon">022/9874-589545</td>   
-            </tr>
-            <tr>
-                <td data-label="Naziv">Bečej prevoz</td>
-                <td data-label="Adresa">Danila Kiša 10, Bečej, 21220</td>
-                <td data-label="Godina">1980</td>
-                <td data-label="Email">bavka@mail.com</td>
-                <td data-label="Telefon">096/2121-322322</td>   
-            </tr>
-            <tr>
-                <td data-label="Naziv">Big Blue</td>
-                <td data-label="Adresa">Kolarčeva 3, Beograd, 11000</td>
-                <td data-label="Godina">1989</td>
-                <td data-label="Email">biblue011@mail.com</td>
-                <td data-label="Telefon">088/6969-8745962</td>   
-            </tr>
-            </tbody>
-            </table>
+      <thead>
+         <tr>
+            <th>Naziv</th>
+            <th>Adresa</th>
+            <th>Godina</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Edit</th>
+            <th>Delete</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td data-label="Naziv">Aero-turs</td>
+            <td data-label="Adresa">Obrenovićeva bb T.C. Gorča,Beograd,11000</td>
+            <td data-label="Godina">2011</td>
+            <td data-label="Email">aero@mail.com</td>
+            <td data-label="Telefon">011/7872-78423</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
+         <tr>
+            <td data-label="Naziv">Air Serbia</td>
+            <td data-label="Adresa">Bulevar umetnosti 16, Beograd, 11000</td>
+            <td data-label="Godina">2005</td>
+            <td data-label="Email">airserbia381@mail.com</td>
+            <td data-label="Telefon">011/3232-784323</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
+         <tr>
+            <td data-label="Naziv">Bavka tours</td>
+            <td data-label="Adresa">Gornji Bunibrod bb, Lazarevac, 16221</td>
+            <td data-label="Godina">1990</td>
+            <td data-label="Email">bavka@mail.com</td>
+            <td data-label="Telefon">022/9874-589545</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
+         <tr>
+            <td data-label="Naziv">Bečej prevoz</td>
+            <td data-label="Adresa">Danila Kiša 10, Bečej, 21220</td>
+            <td data-label="Godina">1980</td>
+            <td data-label="Email">bavka@mail.com</td>
+            <td data-label="Telefon">096/2121-322322</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
+         <tr>
+            <td data-label="Naziv">Big Blue</td>
+            <td data-label="Adresa">Kolarčeva 3, Beograd, 11000</td>
+            <td data-label="Godina">1989</td>
+            <td data-label="Email">biblue011@mail.com</td>
+            <td data-label="Telefon">088/6969-8745962</td>
+            <td><button class="edit-btn">Edit</button></td>
+            <td><button class="delete-btn">Delete</button></td>
+         </tr>
+      </tbody>
+   </table>
+   
     <section class="footer">
         <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
     </section>
