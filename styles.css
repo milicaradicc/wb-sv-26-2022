@@ -266,8 +266,10 @@ p{
   color: whitesmoke;
   margin: 20px auto;
 }
+
+
 .container{
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -284,6 +286,7 @@ input[type="checkbox"]{
   width: 410px;
   padding: 30px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  z-index: 2;
 }
 #show:checked ~ .container{
   display: block;
@@ -363,6 +366,9 @@ form .signup-link a{
 form .signup-link a:hover{
   text-decoration: underline;
 }
+
+
+/* EDIT TABELE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -467,6 +473,8 @@ select {
   background: #69a6ce;
   color: #fff;
 }
+
+/* SLIKE */
 .gallery-container {
   padding-top: 30px;
   display: flex;
@@ -476,6 +484,8 @@ select {
   gap: 10px;
   height: 300px;
   margin-bottom: 50px;
+  position: relative; 
+  z-index: 1; 
 }
 .gallery-item {
   flex: 1 0 200px;
@@ -495,6 +505,7 @@ select {
 }
 
 
+/* RESPONSIVE */
 @media screen and (max-width: 900px) {
   table, thead, tbody, th, td, tr {
     display: block;
