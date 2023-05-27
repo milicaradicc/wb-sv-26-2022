@@ -187,39 +187,16 @@
          </tr>
       </thead>
       <tbody>
-         <tr>
-            <td data-label="Korisnicko ime">jovana</td>
-            <td data-label="Ime">Petar</td>
-            <td data-label="Prezime">Petrovic</td>
-            <td data-label="Email">ppetrovic@webd.com</td>
-            <td data-label="Datum rodjenja">1994-10-22</td>
-            <td data-label="Telefon">061456456</td>
-            <td data-label="Adresa">Gogoljeva 39, Novi Sad,21000</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-         </tr>
-         <tr>
-            <td data-label="Korisnicko ime">jovana</td>
-            <td data-label="Ime">Jovana</td>
-            <td data-label="Prezime">Jovanovic</td>
-            <td data-label="Email">jjovanovic@webd.com</td>
-            <td data-label="Datum rodjenja">1982-05-05</td>
-            <td data-label="Telefon">062321321</td>
-            <td data-label="Adresa">Jug Bogdana 14, Zrenjanin,350902</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-         </tr>
-         <tr>
-            <td data-label="Korisnicko ime">marko</td>
-            <td data-label="Ime">Marko</td>
-            <td data-label="Prezime">Markovic</td>
-            <td data-label="Email">mmarkovic@webd.com</td>
-            <td data-label="Datum rodjenja">1990-09-17</td>
-            <td data-label="Telefon">063876876</td>  
-            <td data-label="Adresa">Cara Lazara 9a, Beograd,11000</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-
+         <tr id="row">
+            <td data-label="Korisnicko ime" id="username"></td>
+            <td data-label="Ime" id="name"></td>
+            <td data-label="Prezime" id="lastname"></td>
+            <td data-label="Email" id="emaill"></td>
+            <td data-label="Datum rodjenja" id="dateofbirth"></td>
+            <td data-label="Telefon" id="phonenumber"></td>
+            <td data-label="Adresa" id="adresa"></td>
+            <td><button class="edit-btn" id="edit-btn">EDIT</button></td>
+            <td><button class="delete-btn" id="delete-btn">DELETE</button></td>
          </tr>
       </tbody>
    </table>
@@ -227,5 +204,6 @@
     <section class="footer">
         <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
     </section>
+    <script src="clients.js"></script>
 </body>
 </html>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>PACK & GO</title>
 </head>
 <body>
@@ -56,74 +58,106 @@
         <div class="container">
            <label for="show" class="close-btn fas fa-times" title="close"></label>
            <div class="text">Ulogujte se🌴</div>
-           <form action="agency_page.html">
+           <form id="formlogin" novalidate>
               <div class="data">
-                 <label>Telefon ili Email: </label>
-                 <input type="text" required>
+                 <label>Korisnicko ime: </label>
+                 <input id="loginusername" type="text">
               </div>
               <div class="data">
                  <label>Lozinka: </label>
-                 <input type="password" required>
+                 <input id="loginpassword" type="password">
               </div>
               <div class="btn">
                  <div class="inner"></div>
                  <button type="submit">login</button>
               </div>
               <div class="signup-link">
-                 Nemate nalog? <a><label for="show2" class="show-btn" href="agency_page.html">Registrujte se!</label></a>
+                 Nemate nalog? <a><label for="show2" class="show-btn">Registrujte se!</label></a>
               </div>
            </form>
         </div>
      </div>
 
-     <div class="center">
+     <div class="center2">
         <input type="checkbox" id="show2">
         <div class="container">
            <label for="show2" class="close-btn fas fa-times" title="close"></label>
            <div class="text">
               Kreirajte nalog!
            </div>
-           <form action="agency_page.html">
-               <div class="data">
-                   <label>Ime: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>Prezime: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>Email: </label>
-                   <input type="email" required>
-                </div>
-                <div class="data">
-                   <label>Datum rodjenja: </label>
-                   <input type="date" required>
-                </div>
-                <div class="data">
-                   <label>Adresa:</label>
-                   <input type="data" required>
-                </div>
-               <div class="data">
-                   <label>Broj telefona: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Korisnicko ime: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Lozinka: </label>
-                   <input type="password" required>
-               </div>
-              <div class="btn">
-                 <div class="inner"></div>
-                 <button type="submit" id="getSignIn">Register</button>
-              </div>
-           </form>
+           <form id="formsignin" novalidate>
+            <div class="data">
+              <label>Ime:</label>
+              <input type="text" id="getName" >
+            </div>
+            <div class="data">
+              <label>Prezime:</label>
+              <input type="text" id="getLastName" >
+            </div>
+            <div class="data">
+              <label>Email:</label>
+              <input type="email" id="getEmail" >
+            </div>
+            <div class="data">
+              <label>Datum rodjenja:</label>
+              <input type="date" id="getDate" >
+            </div>
+            <div class="data">
+              <label>Adresa:</label>
+              <input type="text" id="getAdress" >
+            </div>
+            <div class="data">
+              <label>Broj telefona:</label>
+              <input type="text" id="getPhone" >
+            </div>
+            <div class="data">
+              <label>Korisnicko ime:</label>
+              <input type="text" id="getUserNameSignIn" >
+            </div>
+            <div class="data">
+              <label>Lozinka:</label>
+              <input type="password" id="getPasswordSignIn" >
+            </div>
+            <div class="btn">
+              <div class="inner"></div>
+              <button type="submit" id="open-popup-btn">Register</button>
+            </div>
+          </form>
         </div>
      </div>
-    <header style="color: whitesmoke;">
+<!-- ------------------------------------------------------------------------------- -->
+<!-- dialog -->
+<!-- ------------------------------------------------------------------------------- -->
+<div class="popup center">
+   <div class="icon">
+      <i class="fa fa-check"></i>
+   </div>
+
+   <div class="title" id = "popuptitle"> 
+      Success
+   </div>
+      
+   <div class="description" id="description">
+      xsfvgbhnyjmunhbgvfgbthnuy bv vfgbthynum bv v gbyunb gvfvrgbynu
+   </div>
+
+   <div class="dismiss-btn">
+      <button id="dismiss-popup-btn">dismiss</button>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<header style="color: whitesmoke;">
         <div class="header-content">
             <h2>OVDE LETO JE TRIPUT VRELIJE</h2>
             <div class="line"></div>
@@ -150,32 +184,13 @@
                 </div>
                 </div>
               </div>
-
-<!-- 
-          <img src="" class="card-img-top" alt="">
-          <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-              </svg>
-              <span></span>
-          </p>
-          <p class="card-text">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-              <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-              </svg>
-              <span>
-          </p>
-          <a href="stranice/agencija.html" class="btn btn-theme-brown w-100">Pogledaj ponudu</a> -->
-
     </section>
 
     <section class="footer">
         <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
     </section>
     <script src="main.js"></script>
-    <script src="script.js"></script>
-    
+    <script src="loginsignin.js"></script>
+    <script src="popup.js"></script>
 </body>
 </html>
