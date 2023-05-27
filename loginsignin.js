@@ -3,10 +3,21 @@ var firebaseUrl="https://webprojekat-5430f-default-rtdb.europe-west1.firebasedat
 var users = {};
 var userNames = []
 var request=new XMLHttpRequest();
-
+request.onreadystatechange=function(){
+    if (this.readyState == 4) {
+        if (this.status == 200) {
+            users = JSON.parse(request.responseText);
+        } else {
+            window.location.href = "greska.html";
+        }
+    }
+}
+request.open('GET', firebaseUrl + '/korisnici.json');
+request.send();
 //--------------------------------------------------------------------------------
 // SIGNIN
 //--------------------------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formsignin").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -123,13 +134,15 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+
 //--------------------------------------------------------------------------------
 //LOGIN
 //--------------------------------------------------------------------------------
+
   document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("formlogin").addEventListener("submit", function(event) {
       event.preventDefault();
-
+        console.log(users)
     var username = document.getElementById("loginusername").value;
     var password = document.getElementById("loginpassword").value;
 
@@ -178,4 +191,3 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
-
