@@ -35,30 +35,6 @@ httpRequest.onreadystatechange = function () {
             dateofbirth.innerHTML=user["datumRodjenja"];
             adresa.innerHTML=user["adresa"];
             phonenumber.innerHTML=user["telefon"];
-
-            deletebtn.addEventListener('click',(e)=>{
-                var deletebtn = false;
-                var httpRequest = new XMLHttpRequest();
-                var id = deletebtn.getAttribute('user');
-                document.getElementsByClassName("popup")[0].classList.add("active");
-                document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
-                  document.getElementsByClassName("popup")[0].classList.remove("active");})
-                
-                request.onreadystatechange=function(){
-                  if (this.readyState == 4) {
-                      if (this.status == 200) {
-                        
-                        document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
-                          document.getElementsByClassName("popup")[0].classList.remove("active");})
-                      } else {
-                          window.location.href = "greska.html";
-                      }
-                  }
-              }
-            httpRequest.open('DELETE', firebaseUrl + '/korisnici/'+ id +'.json');
-            httpRequest.send();
-
-            })
         }
         document.getElementById("row").style="display:none";
     } else {

@@ -2,6 +2,7 @@ var firebaseUrl = "https://webprojekat-5430f-default-rtdb.europe-west1.firebased
 var users = {};
 var userNames = []
 var request=new XMLHttpRequest();
+var oldusername;
 request.onreadystatechange=function(){
     if (this.readyState == 4) {
         if (this.status == 200) {
@@ -24,6 +25,7 @@ table.addEventListener("click", function(event) {
         cells = row.getElementsByTagName("td");
         console.log(cells);
         var username = cells[0].innerHTML;
+        oldusername = cells[0].innerHTML;
         var name = cells[1].innerHTML;
         console.log(name);
         var lastname = cells[2].innerHTML;
@@ -69,10 +71,7 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
     console.log(updatedName);
 
     var update = true;
-    var confirm = document.getElementById("popuptitle");
-    confirm.innerHTML = "Registracija nije uspela!";
-    var message = document.getElementById("description");
-    message.innerHTML = "";
+    var message;
 
     if(updatedAdressClient === "" || updatedAdressClient === null){
         update = false;
@@ -80,19 +79,19 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
     }
     if (!updatedPhoneClient.match(/^\d+$/)) {
         update = false;
-        message.innerHTML = "Broj telefona mora da sadrzi samo cifre";
+        message = "Broj telefona mora da sadrzi samo cifre";
     }
     if (updatedPhoneClient === "" || updatedPhoneClient === null) {
         update = false;
-        message.innerHTML = "Morate da unesete broj telefona!";
+        message = "Morate da unesete broj telefona!";
     }    
     if (!updatedDate.match(/^\d+$/)) {
         update = false;
-        message.innerHTML = "Unesite validan datum";
+        message = "Unesite validan datum";
     }
     if (updatedDate=== "" || updatedDate === null) {
         update = false;
-        message.innerHTML = "Morate da unesete datum rodjenja!";
+        message = "Morate da unesete datum rodjenja!";
     }    
     if (updatedEmailClient === "" || updatedEmailClient === null) {
         update = false;
@@ -102,23 +101,23 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         userNames.push(users[id]['korisnickoIme'])
     }
 
-    // if(userNames.includes(updatedUserName)){
-    //     update = false;
-    //     message.innerHTML = "Korisnicko ime je zauzeto"
-    // }
+    if(userNames.includes(updatedUserName) && updatedUserName != oldusername){
+        update = false;
+        message  = "Korisnicko ime je zauzeto"
+    }
     if (updatedLastName === "" || updatedLastName === null) {
         update = false;
-        message.innerHTML = "Morate da unesete prezime";
+        message = "Morate da unesete prezime";
     }
     if (updatedName === "" || updatedName === null) {
         update = false;
-        message.innerHTML = "Morate da unesete ime";
+        message = "Morate da unesete ime";
     }
     console.log(update);
     if (update) {
-        confirm.innerHTML = "Izmena uspesno izvrsena";
-        message.innerHTML = "Zakazite putovanje vec danas";
-        document.getElementsByClassName("popup")[0].classList.add("active");
+        message = "Zakazite putovanje vec danas";
+        document.getElementById("description").innerHTML = message;
+        document.getElementById("proslo").classList.add("active");
         document.getElementById("dismiss-popup-btn").addEventListener("click", function() {
           document.getElementsByClassName("popup")[0].classList.remove("active");
         });
@@ -142,10 +141,64 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         }
       } else {
         // Neuspesna registracija
-        document.getElementsByClassName("popup")[0].classList.add("active");
-        document.getElementById("dismiss-popup-btn").addEventListener("click", function() {
-          document.getElementsByClassName("popup")[0].classList.remove("active");
+        document.getElementById("description1").innerHTML = message;
+        document.getElementById("nijeProslo").classList.add("active");
+        document.getElementById("dismiss-popup-btn1").addEventListener("click", function() {
+            document.getElementsByClassName("popup")[1].classList.remove("active");
         });
       }
       
 });
+
+
+table.addEventListener("click", function(event) {
+    var target = event.target;
+    if (target.classList.contains("delete-btn-client")) {
+      var row = target.parentNode.parentNode;
+      console.log(row);
+  
+      // Prikazivanje potvrde brisanja korisnika (popup-a)
+      document.getElementById("areYouSure").classList.add("active");
+  
+      // Dugme za odbijanje potvrde brisanja
+      document.getElementById("dismiss-popup-btn2").addEventListener("click", function() {
+        document.getElementsByClassName("popup")[2].classList.remove("active");
+      });
+  
+      // Dugme za potvrdu brisanja
+      document.getElementById("ok-popup-btn").addEventListener("click", function() {
+        document.getElementsByClassName("popup")[2].classList.remove("active");
+        
+        // Inicijalizacija XMLHttpRequest objekta
+        var httpRequest = new XMLHttpRequest();
+  
+        for (var id in users) {
+          if (users[id]['korisnickoIme'] === row.children[0].textContent) {
+            console.log(id);
+            httpRequest.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {
+                  // Obrada uspešnog brisanja korisnika
+                  document.getElementById("obrisano").classList.add("active");
+                  document.getElementById("dismiss-popup-btn3").addEventListener("click", function() {
+                    document.getElementsByClassName("popup")[3].classList.remove("active");
+                  });
+                  row.parentNode.removeChild(row);
+                } else {
+                  window.location.href = "greska.html";
+                }
+              }
+            };
+  
+            httpRequest.open('DELETE', firebaseUrl + '/korisnici/' + id + '.json');
+            httpRequest.send();
+          }
+        }
+      });
+    }
+  });
+  
+
+
+// var red = dugme.parentNode.parentNode; // Dohvati roditeljski red dugmeta
+// red.parentNode.removeChild(red)

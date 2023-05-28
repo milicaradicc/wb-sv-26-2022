@@ -451,7 +451,7 @@ tr:nth-child(odd){
   background-color: #007bff;
 }
 
-.delete-btn {
+.delete-btn, .delete-btn-client {
   background-color: #dc3545;
 }
 
@@ -636,6 +636,7 @@ select {
   font-size: 30px;
   color: #34f234;
 }
+
 .popup title{
   margin: 5px 0px;
   font-size: 30px;

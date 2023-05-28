@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-*********" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-*********" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <title>PACK & GO</title>
 </head>
 <body>
@@ -157,7 +158,7 @@
                   <td data-label="Datum rodjenja" id="dateofbirthtable"></td>
                   <td data-label="Telefon" id="phonenumbertable"></td>
                   <td data-label="Adresa" id="adresatable"></td>
-                  <td><button class="delete-btn" id="delete-btn">DELETE</button></td>
+                  <td><button class="delete-btn-client" id="delete-btn">DELETE</button></td>
               </tr>
           </tbody>
       
@@ -185,43 +186,75 @@
 
    <div class="popup center" id="proslo">
       <div class="icon">
-         <i class="fa fa-question"></i>
+         <i class="fa fa-checkd"></i>
       </div>
    
       <div class="title" id = "popuptitle"> 
-         Success
+         Izmena uspesno izvrsena
       </div>
          
       <div class="description" id="description">
-         xsfvgbhnyjmunhbgvfgbthnuy bv vfgbthynum bv v gbyunb gvfvrgbynu
-      </div>
-   
-      <div class="dismiss-btn">
-         <button id="dismiss-popup-btn">Otkazi</button>
-      </div>
-      <div class="ok-btn">
-         <button id="ok-popup-btn">Potvrdi</button>
-      </div>
-   </div>
-
-   <div class="popup center" id="nijeProslo">
-      <div class="icon">
-         <i class="fa fa-times"></i>
-      </div>
-   
-      <div class="title" id = "popuptitle"> 
-         Success
-      </div>
-         
-      <div class="description" id="description">
-         xsfvgbhnyjmunhbgvfgbthnuy bv vfgbthynum bv v gbyunb gvfvrgbynu
+         Zakazite putovanje vec danas
       </div>
    
       <div class="dismiss-btn">
          <button id="dismiss-popup-btn">Potvrdi</button>
       </div>
    </div>
+
+   <div class="popup center" id="nijeProslo">
+      <div class="icon" style=" border: 2px solid red;">
+         <i class="fa fa-times" style=" font-size: 30px; color: red;"></i>
+      </div>
    
+      <div class="title" id = "popuptitle1"> 
+         Izmena nije uspesna
+      </div>
+         
+      <div class="description" id="description1">
+         Something went wrong
+      </div>
+      <div class="dismiss-btn">
+         <button id="dismiss-popup-btn1">Potvrdi</button>
+      </div>
+   </div>
+   
+   <div class="popup center" id="areYouSure">
+      <div class="icon" style=" border: 2px solid blue;">
+         <i class="fa fa-question" style=" font-size: 30px; color: blue;"></i>
+      </div>
+   
+      <div class="title" id = "popuptitle1"> 
+         Ova akcija rezultuje trajnim brisanjem!
+      </div>
+         
+      <div class="description" id="description2">
+         Da li ste sigurni?
+      </div>
+      <div class="dismiss-btn">
+         <button id="dismiss-popup-btn2">Otkazi</button>
+      </div>
+      <div class="dismiss-btn">
+         <button id="ok-popup-btn">Potvrdi</button>
+      </div>
+   </div>
+
+   <div class="popup center" id="obrisano">
+      <div class="icon" style=" border: 2px solid greenyellow;">
+         <i class="fa fa-check" style=" font-size: 30px; color: greenyellow;"></i>
+      </div>
+   
+      <div class="title" id = "popuptitle3"> 
+         Uspesno obrisano
+      </div>
+         
+      <div class="description" id="description3">
+         Radnja izvrsena
+      </div>
+      <div class="dismiss-btn">
+         <button id="dismiss-popup-btn3">Potvrdi</button>
+      </div>
+   </div>
    
     <section class="footer">
         <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
