@@ -26,10 +26,7 @@ httpRequest.onreadystatechange = function () {
             var dateofbirth = clone.children[4];
             var phonenumber = clone.children[5];
             var adresa = clone.children[6];
-            var editbtn = clone.children[7];
-            editbtn.setAttribute('user', id)
-            var deletebtn = clone.children[8];
-            deletebtn.setAttribute('user',id)
+            var deletebtn = clone.children[7];
 
             username.innerHTML=user["korisnickoIme"];
             name.innerHTML=user["ime"];
@@ -40,10 +37,27 @@ httpRequest.onreadystatechange = function () {
             phonenumber.innerHTML=user["telefon"];
 
             deletebtn.addEventListener('click',(e)=>{
+                var deletebtn = false;
                 var httpRequest = new XMLHttpRequest();
-                var id = deleteButton.getAttribute('user')
-                httpRequest.open('DELETE', firebaseUrl + '/korisnici/'+ id +'.json');
-                httpRequest.send();
+                var id = deletebtn.getAttribute('user');
+                document.getElementsByClassName("popup")[0].classList.add("active");
+                document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+                  document.getElementsByClassName("popup")[0].classList.remove("active");})
+                
+                request.onreadystatechange=function(){
+                  if (this.readyState == 4) {
+                      if (this.status == 200) {
+                        
+                        document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+                          document.getElementsByClassName("popup")[0].classList.remove("active");})
+                      } else {
+                          window.location.href = "greska.html";
+                      }
+                  }
+              }
+            httpRequest.open('DELETE', firebaseUrl + '/korisnici/'+ id +'.json');
+            httpRequest.send();
+
             })
         }
         document.getElementById("row").style="display:none";

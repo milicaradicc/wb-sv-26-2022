@@ -368,32 +368,75 @@ form .signup-link a:hover{
 }
 
 
-/* EDIT TABELE */
-table {
-  width: 100%;
-  border-collapse: collapse;
+.mainTable{
+	text-align: center;
+	margin-top: 10px;
+}
+#table{
+	margin: 5px auto;
+}
+table tr:not(:first-child){
+	cursor: pointer;
+	transition: all .25s ease-in-out;
+}
+table tr:not(:first-child):hover{
+	background-color: #ddd;
 }
 
-th, td {
-  padding: 5px;
-  text-align: center;
-  border: 1px solid #ddd;
+table{
+    width: 60%;
+    border-collapse: collapse;
+    text-align: center;
 }
 
-th {
-  background-color: #f2f2f2;
+tr:nth-child(odd){
+    background-color: lightgray;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+/*Data Update Button */
+.updateBtn{
+	text-align: center;
+}
+.updateBtn button{
+	background-color: red;
+	padding: 5px 10px;
+	border: 1px solid black;
+	color: white;
+	margin: 10px 0;
+	border-radius: 5px;
+}
+.updateBtn button:hover{
+	background: lightgray;
+	color: black;
+	transition: .5s;
 }
 
-/* td:last-child {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-.edit-btn,
+/*Data Update Table*/
+.editTable{
+	display: none;
+	padding-top: 20px;
+	width: 30%;
+	margin: 0 auto;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.editRowBtn{
+	background-color: #0DC143;
+	color: white;
+	border: 1px solid black;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.editRowBtn:hover{
+	background-color: lightgray;
+	color: black;
+	transition: .5s;
+}
+.edit-btn,.edit-btn-client,
 .delete-btn {
   margin: 5px;
   padding: 8px 12px;
@@ -404,7 +447,7 @@ tr:nth-child(even) {
   cursor: pointer;
 }
 
-.edit-btn {
+.edit-btn,.edit-btn-client {
   background-color: #007bff;
 }
 
@@ -503,7 +546,49 @@ select {
 .gallery-item:hover img {
   transform: scale(1.1);
 }
+/*Data Update Button */
+.updateBtn{
+	text-align: center;
+}
+.updateBtn button{
+	background-color: red;
+	padding: 5px 10px;
+	border: 1px solid black;
+	color: white;
+	margin: 10px 0;
+	border-radius: 5px;
+}
+.updateBtn button:hover{
+	background: lightgray;
+	color: black;
+	transition: .5s;
+}
 
+/*Data Update Table*/
+.editTable{
+	display: none;
+	padding-top: 20px;
+	width: 30%;
+	margin: 0 auto;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.editRowBtn{
+	background-color: #0DC143;
+	color: white;
+	border: 1px solid black;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.editRowBtn:hover{
+	background-color: lightgray;
+	color: black;
+	transition: .5s;
+}
 .center{
   font-family: "Raleway", sans-serif;
   position: absolute;
@@ -561,11 +646,11 @@ select {
   font-size: 15px;
   padding: 5px;
 }
-.popup .dismiss-btn{
+.popup .dismiss-btn, .popup .ok-btn{
   margin-top: 15px;
   color: white
 }
-.popup .dismiss-btn button{
+.popup .dismiss-btn button, .popup .ok-btn button{
   padding: 10px 20px;
   background: #111;
   color: white;
@@ -577,7 +662,7 @@ select {
   transition: all 300ms ease-in-out;
   cursor: pointer;
 }
-.popup .dismiss-btn button:hover{
+.popup .dismiss-btn button:hover,  .popup .ok-btn button:hover{
   color: #111;
   background-color: white;
 }
