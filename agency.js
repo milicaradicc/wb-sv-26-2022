@@ -24,7 +24,10 @@ agencyRequest.onreadystatechange = function() {
             if (this.status == 200) {
                 var destinations = JSON.parse(destinationsRequest.responseText);
                 console.log(destinations);
-
+                document.getElementById("footeradress").innerHTML = agency['adresa'];
+                document.getElementById("footeryear").innerHTML = agency['godina'];
+                document.getElementById("footerphone").innerHTML = agency['brojTelefona'];
+                document.getElementById("footeremail").innerHTML = agency['email'];
                 for (var id in destinations) {// Check if property belongs to the object itself
                     var destination = destinations[id];
                     console.log(destination)

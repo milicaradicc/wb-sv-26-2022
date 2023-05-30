@@ -1,18 +1,18 @@
 var firebaseUrl = "https://webprojekat-5430f-default-rtdb.europe-west1.firebasedatabase.app";
-var agencies = {};
-var agenciesID = []
+var destinations = {};
+var destinationsID = []
 var request=new XMLHttpRequest();
 var oldname;
 request.onreadystatechange=function(){
     if (this.readyState == 4) {
         if (this.status == 200) {
-            agencies = JSON.parse(request.responseText);
+            destinations = JSON.parse(request.responseText);
         } else {
             window.location.href = "greska.html";
         }
     }
 }
-request.open('GET', firebaseUrl + '/agencije.json');
+request.open('GET', firebaseUrl + '/destinacije.json');
 request.send();
 var table = document.getElementById("table");
 var body = table.querySelector("tbody");
@@ -24,12 +24,16 @@ table.addEventListener("click", function(event) {
         var row = target.parentNode;
         cells = row.getElementsByTagName("td");
         console.log(cells);
+
+
         var agencyname = cells[0].innerHTML;
         oldname = cells[0].innerHTML;
         var agencyadress = cells[1].innerHTML;
         var agencyyear = cells[2].innerHTML;
         var agencyemail = cells[3].innerHTML;
         var agencyphone = cells[4].innerHTML;
+        var agencydest = cells[5].innerHTML.split(",").map(item => item.trim());
+        console.log(agencydest);
 
         //popuni frejm
         document.getElementById("formagencyname").value = agencyname;
@@ -37,6 +41,24 @@ table.addEventListener("click", function(event) {
         document.getElementById("formagencyyear").value = agencyyear;
         document.getElementById("formagencyemail").value = agencyemail;
         document.getElementById("formagencyphone").value = agencyphone;
+        for (var groupID in destinations) {
+          for (var id in destinations[groupID]) {
+             var original = document.getElementById("check");
+      
+             var clone = original.cloneNode(true);
+             clone.id = "";
+             original.parentNode.appendChild(clone);
+             console.log(clone);
+             clone.children[0].children[1].innerHTML = destinations[groupID][id]['naziv'];
+             if (agencydest.includes(destinations[groupID][id]['naziv'])) {
+                clone.children[0].children[0].checked = true;
+             }else{
+              clone.children[0].children[0].checked = false;
+             }
+          }
+       }
+       
+       document.getElementById("check").style.display = "none";
         
     }
 });
@@ -72,6 +94,10 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete broj telefona!";
     }    
+    if(!updatedagencyphone.match(/^[\d/]+$/)){
+      update = false;
+      message = "Format broja telefona nije dobar koristite brojeve i /"
+    }
     if (!updatedagencyyear.match(/^\d+$/)) {
         update = false;
         message = "Unesite validnu godinu";
@@ -92,11 +118,11 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete naziv agencije";
     }
-    for(var id in agencies){
-      agenciesID.push(agencies[id]['korisnickoIme'])
+    for(var id in destinations){
+      destinationsID.push(destinations[id]['korisnickoIme'])
     }
 
-    if(agenciesID.includes(updatedagencyname) && updatedagencyname != oldname){
+    if(destinationsID.includes(updatedagencyname) && updatedagencyname != oldname){
         update = false;
         message  = "Vec postoji agencija sa ovim imenom"
     }
@@ -110,19 +136,19 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
           document.getElementsByClassName("popup")[0].classList.remove("active");
         });
         console.log(oldname);
-        for (var id in agencies) {
-          if (agencies[id]['naziv'] === oldname) {
-            agencies[id]['adresa'] = updatedagencyadress;
-            agencies[id]['brojTelefona'] = updatedagencyphone;
-            agencies[id]['email'] = updatedagencyemail;
-            agencies[id]['naziv'] = updatedagencyname;
-            agencies[id]['godina'] = updatedagencyyear;
+        for (var id in destinations) {
+          if (destinations[id]['naziv'] === oldname) {
+            destinations[id]['adresa'] = updatedagencyadress;
+            destinations[id]['brojTelefona'] = updatedagencyphone;
+            destinations[id]['email'] = updatedagencyemail;
+            destinations[id]['naziv'] = updatedagencyname;
+            destinations[id]['godina'] = updatedagencyyear;
       
             var putRequest = new XMLHttpRequest();
             putRequest.open('PUT', firebaseUrl + '/agencije/' + id + '.json', true);
             putRequest.setRequestHeader('Content-Type', 'application/json');
-            console.log(JSON.stringify(agencies[id]));
-            putRequest.send(JSON.stringify(agencies[id]));
+            console.log(JSON.stringify(destinations[id]));
+            putRequest.send(JSON.stringify(destinations[id]));
           }
         }
       } else {
@@ -159,10 +185,10 @@ table.addEventListener("click", function(event) {
 
         // Inicijalizacija XMLHttpRequest objekta
         var httpRequest = new XMLHttpRequest();
-        console.log(agencies);
-        for(var id in agencies) {
+        console.log(destinations);
+        for(var id in destinations) {
           console.log(id);
-          if (agencies[id]['naziv'] === row.children[0].textContent) {
+          if (destinations[id]['naziv'] === row.children[0].textContent) {
             console.log(id);
             httpRequest.onreadystatechange = function() {
               if (this.readyState == 4) {
@@ -188,7 +214,14 @@ table.addEventListener("click", function(event) {
     }
   });
   
+  table.addEventListener("click", function(event) {
+    var target = event.target;
+    if (target.classList.contains("create")) {
+      var row = target.parentNode.parentNode;
+      console.log(row);
+  
+      // Prikazivanje potvrde brisanja korisnika (popup-a)
+      document.getElementById("kreiraj").classList.add("active");
 
-
-// var red = dugme.parentNode.parentNode; // Dohvati roditeljski red dugmeta
-// red.parentNode.removeChild(red)
+    }
+  });

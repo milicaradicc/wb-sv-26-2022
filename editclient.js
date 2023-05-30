@@ -85,9 +85,9 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete broj telefona!";
     }    
-    if (!updatedDate.match(/^\d+$/)) {
+    if (!updatedDate.match(/^[\d\/-]+$/)) {
         update = false;
-        message = "Unesite validan datum";
+        message = "Unesite validan datum, samo brojevi i -";
     }
     if (updatedDate=== "" || updatedDate === null) {
         update = false;

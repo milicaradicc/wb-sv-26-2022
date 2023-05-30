@@ -131,116 +131,131 @@
         </div>
     </header>
 
-
-    <form class="edit">
-        <h2>Dodajte novu destinaciju</h2>
-         <br>
-         <label>Izaberite agenciju kojoj dodajete destinaciju</label>
-         <select name="dest" id="dest">
-            <option value="M">Aero-turs</option>
-            <option value="J">Air Serbia</option>
-            <option value="P">Bavka tours</option>
-            <option value="P">Bečej prevoz</option>
-            <option value="P">Big Blue</option>
-        </select>
-        <div class="data">
-            <label>Naziv destinacije: </label>
-               <input type="text">
-        </div>
-        <div class="data">
-            <label>Opis: </label>
-               <input type="text">
-        </div>
-        <div class="data">
-            <label>Tip: </label>
-               <input type="text">
-        </div>
-        <div class="data">
-            <label>Prevoz: </label>
-               <input type="text">
-        </div>
-        <div class="data">
-            <label>Cena: </label>
-               <input type="text">
-        </div>
-        <div class="data">
-            <label>Max osoba: </label>
-               <input type="text">
-        </div>
-        <div class="btn" style="width: 100px; align-self: center;">
-            <div class="inner"></div>
-            <button type="submit">Sacuvaj</button>
-         </div>
-    </form>
-
-    <table>
-		<thead>
-			<tr>
-				<th>Naziv destinacije</th>
-				<th>Opis</th>
-				<th>Tip</th>
-				<th>Prevoz</th>
-				<th>Cena</th>
-				<th>Max osoba</th>
-            <th>Edit</th>
-            <th>Delete</th>
-			</tr>
+    <div class="mainTable">
+      <table id="table" border="1">
+          <thead>
+            <tr>
+               <th>Naziv destinacije</th>
+               <th>Opis</th>
+               <th>Tip</th>
+               <th>Prevoz</th>
+               <th>Cena</th>
+               <th>Max osoba</th>
+               <th>Slika</th>
+               <th>Delete</th>
+            </tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td data-label="Naziv destinacije">Sitonija</td>
-				<td data-label="Opis">Sitonija zapravo predstavlja drugi prst Halkidikija i nalazi se između poluostrva Atos i Kasandra. Neverovatno grčko letovalište koje karakterišu luksuzni Sitonija apartmani sa izvanrednom uslugom i brojnim turističkim i kulturnim sadržajem. Sitonija apartmani 2023 su idealni za putnike koji su u potrazi za mirnim odmorom na mestu koje je pre svega zadržalo svoju prirodnu lepotu i nije toliko komercijalno razvijeno.</td>
-				<td data-label="Tip">Letovanje</td>
-				<td data-label="Prevoz">autobus</td>
-				<td data-label="Cena">21545</td>
-				<td data-label="Max osoba">52</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
+			<tr id="row">
+				<td data-label="Naziv destinacije"></td>
+				<td data-label="Opis"></td>
+				<td data-label="Tip"></td>
+				<td data-label="Prevoz"></td>
+				<td data-label="Cena"></td>
+				<td data-label="Max osoba"></td>
+            <td style="width: 20px;" data-label="Slika"></td>
+            <td><button class="delete-btn-destination">Delete</button></td>
          </tr>
-			<tr>
-				<td data-label="Naziv destinacije">Atos</td>
-				<td data-label="Opis">Atos, najistočnije poluostrvo Halkidikija, možda najmanje posećen, ali zato nedovoljno istražen i veoma atraktivan. Ovaj neotkriven raj je za miran i bezbrižan odmor. Poluostrvo je šumovito, a pored toga ističe se po planini Atos, čiji je najviši vrh 2033 m. Udaljenost od Beograda je oko 750 km, a od Soluna oko 100 km. Prema grčkoj mitologiji giganti su nastanjivali ovaj prostor, a po jednom od njih ovaj prst je dobio naziv.</td>
-				<td data-label="Tip">Letovanje</td>
-				<td data-label="Prevoz">autobus</td>
-				<td data-label="Cena">19787</td>
-				<td data-label="Max osoba">44</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-			</tr>
-			<tr>
-				<td data-label="Naziv destinacije">Platamons</td>
-				<td data-label="Opis">Platamon je smešten u Olimpskoj Regiji (oblast Pieria) na manje od 4 kilometara od popularnog letovališta Nei Pori i desetak kilometara od Leptokarije. Do skoro ovo mesto bilo je ljubomorno čuvana tajna turista iz kopnenog dela Grčke ali u poslednjih par godina ovaj trend je počeo da se menja i sve više stranih posetioca dolazi u ovo mesto, a pogotovo iz Srbije.Platamon se može pohvaliti ne sa jednom već sa dve prelepe plaže i lukom koja se nalazi između i razdvaja ih. Obe plaže su šljunkovite odlično su uređene i na njima se nalaze beach barovi koji nude na raspolaganje ležaljke i suncobrane bez naknade za iznajmljivanje, već uz konzumaciju pića ih dobijate na korišćenje. U blizini se nalazi kamp Kalamaki a ispred ovog kampa se nalazi plaža prekrivena peskom, te ljubitelji ovakvih plaža imaju i ovu soluciju.</td>
-				<td data-label="Tip">Letovanje</td>
-				<td data-label="Prevoz">autobus</td>
-				<td data-label="Cena">24784</td>
-				<td data-label="Max osoba">42</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-            </tr>
-            <tr>
-            <td data-label="Naziv destinacije">Nea Vrasna</td>
-            <td data-label="Opis">Nea Vrasnu možemo opisati kao malo i mirno selo sa samo 2500 stanovnika. I u toku sezone, osim naravno buke i gužve zbog velikog broja turista, ostaje u večernjim satima prilično mirno zbog nedostatka klubova i organizovanog noćnog života. Zbog ovog podatka se najčešće preporučuje kao savršen izbor za porodice sa malom decom i ljude koji žele pravi odmor.Klima u ovom mestu je idealna, blagi povetarac čini da i najveće vrućine budu znatno podnošljivije, a večeri prijatnije. Međutim, ono na šta se mnogi turisti žale je veće prisustvo komaraca u odnosu na ostala letovališta. Stoga, ponesite Autan ili neko adekvatno sredstvo, naročito zbog vaših mališana.</td>
-            <td data-label="Tip">Letovanje</td>
-            <td data-label="Prevoz">autobus</td>
-            <td data-label="Cena">18999</td>
-            <td data-label="Max osoba">40</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-            </tr>
-            <tr>
-            <td data-label="Naziv destinacije">Sarti</td>
-            <td data-label="Opis">Sarti je pre samog turističkog procvata važio za skromno i mirno ribarsko selo u kom živi oko 1200 stanovnika. Smešten je na istočnoj obali Sitonije, tačnije na drugom prstu svima poznatog poluostrva Halkidiki. Od grada Soluna je udaljen nešto više od 130km. Kada budete dane svog odmora provodili na peščanoj plaži Sartija, bićete u prilici da uživate u pogledu na fascinantan Atos.</td>
-            <td data-label="Tip">Letovanje</td>
-            <td data-label="Prevoz">autobus</td>
-            <td data-label="Cena">24784</td>
-            <td data-label="Max osoba">41</td>
-            <td><button class="edit-btn">Edit</button></td>
-            <td><button class="delete-btn">Delete</button></td>
-            </tr>
             </tbody>
             </table>
+         </div>
+
+
+              <!-- Update Button -->
+  <div class="updateBtn">
+   <button  onclick="editTableDisplay()">Update data</button>
+</div>
+
+<!-- Edit table -->
+<div class="editTable">
+   <div class="left">Naziv destinacije: </div><div class="right"><input type="text" name="fname" id="formnamedestination"></div><br><br>
+   <div class="left">Opis: </div><div class="right"><input type="text" name="lname" id="formdatadestination"></div><br><br>
+   <div class="left">Tip: </div><div class="right"><input type="text" name="country" id="formtypedestination"></div><br><br>
+   <div class="left">Prevoz: </div><div class="right"><input type="text" name="mNumber" id="formtraveldestination"></div><br><br>
+   <div class="left">Cena: </div><div class="right"><input type="text" name="mNumber" id="formpricedestination"></div><br><br>
+   <div class="left">Max osoba: </div><div class="right"><input type="text" name="mNumber" id="formmaxdestination"></div><br><br>
+   <div class="left">Slika: </div><div class="right"><input type="text" name="mNumber" id="formpicturedestination"></div><br><br>
+   <button onclick="editTableDisplay();" class="editRowBtn" id="editRowBtnn">Update</button><br><br>
+</div>   
+
+
+<div class="popup center" id="prosloo">
+   <div class="icon">
+      <i class="fa fa-checkd"></i>
+   </div>
+
+   <div class="title" id = "popuptitle"> 
+      Izmena uspesno izvrsena
+   </div>
+      
+   <div class="description" id="descriptionnn">
+      Refresujte stranicu
+   </div>
+
+   <div class="dismiss-btn">
+      <button id="dismiss-popup-btnn">Potvrdi</button>
+   </div>
+</div>
+
+<div class="popup center" id="nijeProsloo">
+   <div class="icon" style=" border: 2px solid red;">
+      <i class="fa fa-times" style=" font-size: 30px; color: red;"></i>
+   </div>
+
+   <div class="title" id = "popuptitle1"> 
+      Izmena nije uspesna
+   </div>
+      
+   <div class="description" id="descriptionn">
+      Something went wrong
+   </div>
+   <div class="dismiss-btn">
+      <button id="dismiss-popup-btnnn">Potvrdi</button>
+   </div>
+</div>
+
+<div class="popup center" id="areYouSuree">
+   <div class="icon" style=" border: 2px solid blue;">
+      <i class="fa fa-question" style=" font-size: 30px; color: blue;"></i>
+   </div>
+
+   <div class="title" id = "popuptitle1"> 
+      Ova akcija rezultuje trajnim brisanjem!
+   </div>
+      
+   <div class="description" id="description2">
+      Da li ste sigurni?
+   </div>
+   <div class="dismiss-btn">
+      <button id="dismiss-popup-btna">Otkazi</button>
+   </div>
+   <div class="dismiss-btn">
+      <button id="ok-popup-btna">Potvrdi</button>
+   </div>
+</div>
+
+<div class="popup center" id="obrisanO">
+   <div class="icon" style=" border: 2px solid greenyellow;">
+      <i class="fa fa-check" style=" font-size: 30px; color: greenyellow;"></i>
+   </div>
+
+   <div class="title" id = "popuptitle3"> 
+      Uspesno obrisano
+   </div>
+      
+   <div class="description" id="description3">
+      Radnja izvrsena
+   </div>
+   <div class="dismiss-btn">
+      <button id="dismiss-popup-btN">Potvrdi</button>
+   </div>
+</div>
+
+
     <section class="footer">
         <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
     </section>
+    <script src="destinations.js"></script>
+    <script src="edit_destinations.js"></script>
 </body>
 </html>

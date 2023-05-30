@@ -30,6 +30,7 @@ httpRequest.onreadystatechange = function () {
         var year = list.children[1];
         var phone = list.children[2];
         var email = list.children[3];
+        var card = document.querySelector(".cards");
         var button = cardContent.querySelector(".ctn"); // Use querySelector to select the button        
         icon.src = agency["logo"];
         icon.alt = agency["naziv"];
@@ -39,7 +40,8 @@ httpRequest.onreadystatechange = function () {
         phone.innerHTML = agency["brojTelefona"];
         adress.innerHTML = agency["adresa"];
         year.innerHTML = agency["godina"];
-        button.href += "?id=" + id;
+        button.href = "agency_page.html?id=" + id;
+        card.href = "agency_page.html?id=" + id;
 
         agenciesID.push(id);
       }

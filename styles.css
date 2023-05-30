@@ -388,9 +388,16 @@ table{
     border-collapse: collapse;
     text-align: center;
 }
-
+td {
+  border: 1px solid black;
+  padding: 8px;
+  width: 200px; /* Set the width of the table cell */
+}
 tr:nth-child(odd){
-    background-color: lightgray;
+    background-color: whitesmoke;
+}
+tr:nth-child(even){
+  background-color: whitesmoke;
 }
 
 /*Data Update Button */
@@ -436,7 +443,7 @@ tr:nth-child(odd){
 	color: black;
 	transition: .5s;
 }
-.edit-btn,.edit-btn-client,.delete-btn-agency,.delete-btn-client,
+.edit-btn,.create,.controle ,.edit-btn-client,.delete-btn-agency,.delete-btn-client,.delete-btn-destination,
 .delete-btn {
   margin: 5px;
   padding: 8px 12px;
@@ -447,11 +454,11 @@ tr:nth-child(odd){
   cursor: pointer;
 }
 
-.edit-btn,.edit-btn-client {
+.edit-btn,.edit-btn-client,.create,.controle {
   background-color: #007bff;
 }
 
-.delete-btn, .delete-btn-client, .delete-btn-agency {
+.delete-btn, .delete-btn-client, .delete-btn-agency,.delete-btn-destination {
   background-color: #dc3545;
 }
 
@@ -667,6 +674,59 @@ select {
   color: #111;
   background-color: white;
 }
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.tour-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tour-table th,
+.tour-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid lightgray;
+}
+
+.tour-table th {
+  font-weight: bold;
+  vertical-align: top;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+
+  .footer-item {
+    border: 1px solid lightgray;
+    padding: 5px;
+  }
+
+  .footer-label {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
 
 
 /* RESPONSIVE */

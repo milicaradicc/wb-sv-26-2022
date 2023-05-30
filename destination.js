@@ -28,7 +28,10 @@ agencyRequest.onreadystatechange = function() {
 
                                     document.getElementById("main").innerHTML = destination['naziv'];
                                     document.getElementById("tekst").innerHTML = destination['opis'];
-
+                                    document.getElementById("tip").innerHTML = destination['tip'];
+                                    document.getElementById("prevoz").innerHTML = destination['prevoz'];
+                                    document.getElementById("cena").innerHTML = destination['cena'];
+                                    document.getElementById("maxosoba").innerHTML = destination['maxOsoba'];
                                     for(var pic in destination['slike']){
                                         console.log(pic);
                                         var original = document.getElementById("slika");
