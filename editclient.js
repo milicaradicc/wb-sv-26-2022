@@ -95,7 +95,7 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
     }    
     if (updatedEmailClient === "" || updatedEmailClient === null) {
         update = false;
-        message = "Morate da unesete datum rodjenja";
+        message = "Morate da unesete email";
     }
     for(var id in users){
         userNames.push(users[id]['korisnickoIme'])
@@ -123,7 +123,7 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         });
         console.log(users);
         for (var id in users) {
-          if (users[id]['korisnickoIme'] === updatedUserName) {
+          if (users[id]['korisnickoIme'] === oldusername) {
             users[id]['adresa'] = updatedAdressClient;
             users[id]['datumRodjenja'] = updatedDate;
             users[id]['email'] = updatedEmailClient;

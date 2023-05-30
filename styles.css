@@ -436,7 +436,7 @@ tr:nth-child(odd){
 	color: black;
 	transition: .5s;
 }
-.edit-btn,.edit-btn-client,
+.edit-btn,.edit-btn-client,.delete-btn-agency,.delete-btn-client,
 .delete-btn {
   margin: 5px;
   padding: 8px 12px;
@@ -451,7 +451,7 @@ tr:nth-child(odd){
   background-color: #007bff;
 }
 
-.delete-btn, .delete-btn-client {
+.delete-btn, .delete-btn-client, .delete-btn-agency {
   background-color: #dc3545;
 }
 
