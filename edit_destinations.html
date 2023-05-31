@@ -67,7 +67,7 @@
             </div>
             <div class="btn">
                <div class="inner"></div>
-               <button type="submit">login</button>
+               <button type="submit" id="formlogin">login</button>
             </div>
             <div class="signup-link">
                Nemate nalog? <a><label for="show2" class="show-btn">Registrujte se!</label></a>
@@ -123,6 +123,46 @@
         </form>
       </div>
    </div>
+<!-- ------------------------------------------------------------------------------- -->
+<!-- dialog -->
+<!-- ------------------------------------------------------------------------------- -->
+<div class="popup center" id="pass">
+ <div class="icon">
+    <i class="fa fa-check"></i>
+ </div>
+
+ <div class="title" id = "popuptitle"> 
+  Uspesno ste se registrovali
+ </div>
+    
+ <div class="description" id="desc">
+  Zakazite putovanje vec danas!
+ </div>
+
+ <div class="dismiss-btn">
+    <button id="dismiss">Potvrdi</button>
+ </div>
+</div>
+
+<div class="popup center" id="fail">
+<div class="icon" style=" border: 2px solid red;">
+  <i class="fa fa-times" style=" font-size: 30px; color: red;"></i>
+</div>
+
+<div class="title" id = "popuptitle1"> 
+  Registracija nije uspela
+</div>
+   
+<div class="description" id="desc1">
+  Unesite ispravne podatke
+</div>
+
+<div class="dismiss-btn">
+   <button id="dismiss1">Potvrdi</button>
+</div>
+</div>
+
+
     <header style="color: whitesmoke;">
         <div class="header-content">
             <h2>OVDE LETO JE TRIPUT VRELIJE</h2>
@@ -179,9 +219,13 @@
 </div>   
 
 
+
+
+
+
 <div class="popup center" id="prosloo">
    <div class="icon">
-      <i class="fa fa-checkd"></i>
+      <i class="fa fa-check"></i>
    </div>
 
    <div class="title" id = "popuptitle"> 
@@ -252,10 +296,29 @@
 </div>
 
 
-    <section class="footer">
-        <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
-    </section>
+<section class="footer">
+
+   <div class="footer-grid">
+     <div class="footer-item">
+       <p class="footer-label">Adresa:</p>
+       <p id="footeradress">Trg Dositeja Obradovića 6, 21102 Novi Sad</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Fax:</p>
+       <p id="footeryear">(+381) 12 123 456</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Broj Telefona:</p>
+       <p id="footerphone">(+381) 21 211 212, (+381) 23 345 567</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Email:</p>
+       <p id="footeremail">contact@uns.ac.rs</p>
+     </div>
+   </div>
+ </section>
     <script src="destinations.js"></script>
+    <script src="loginsignin.js"></script>
     <script src="edit_destinations.js"></script>
 </body>
 </html>

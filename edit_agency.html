@@ -51,78 +51,118 @@
       </div>
     </nav>
 
-      <div class="center">
-        <input type="checkbox" id="show">
-        <div class="container">
-           <label for="show" class="close-btn fas fa-tGodinas" title="close"></label>
-           <div class="text">Ulogujte se🌴</div>
-           <form action="#">
-              <div class="data">
-                 <label>Telefon ili Email: </label>
-                 <input type="text" required>
-              </div>
-              <div class="data">
-                 <label>Adresa: </label>
-                 <input type="password" required>
-              </div>
-              <div class="btn">
-                 <div class="inner"></div>
-                 <button type="submit">login</button>
-              </div>
-              <div class="signup-link">
-                 Nemate nalog? <a><label for="show2" class="show-btn" href="#">Registrujte se!</label></a>
-              </div>
-           </form>
-        </div>
-     </div>
+    <div class="center">
+      <input type="checkbox" id="show">
+      <div class="container">
+         <label for="show" class="close-btn fas fa-times" title="close"></label>
+         <div class="text">Ulogujte se🌴</div>
+         <form id="formlogin" novalidate>
+            <div class="data">
+               <label>Korisnicko ime: </label>
+               <input id="loginusername" type="text">
+            </div>
+            <div class="data">
+               <label>Lozinka: </label>
+               <input id="loginpassword" type="password">
+            </div>
+            <div class="btn">
+               <div class="inner"></div>
+               <button type="submit" id="formlogin">login</button>
+            </div>
+            <div class="signup-link">
+               Nemate nalog? <a><label for="show2" class="show-btn">Registrujte se!</label></a>
+            </div>
+         </form>
+      </div>
+   </div>
 
-     <div class="center">
-        <input type="checkbox" id="show2">
-        <div class="container">
-           <label for="show2" class="close-btn fas fa-tGodinas" title="close"></label>
-           <div class="text">
-              Kreirajte nalog!
-           </div>
-           <form action="#">
-               <div class="data">
-                   <label>Godina: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>PrezGodina: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>Email: </label>
-                   <input type="email" required>
-                </div>
-                <div class="data">
-                   <label>Datum rodjenja: </label>
-                   <input type="date" required>
-                </div>
-                <div class="data">
-                   <label>Adresa:</label>
-                   <input type="data" required>
-                </div>
-               <div class="data">
-                   <label>Broj telefona: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Naziv: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Adresa: </label>
-                   <input type="password" required>
-               </div>
-              <div class="btn">
-                 <div class="inner"></div>
-                 <button type="submit">Register</button>
-              </div>
-           </form>
-        </div>
-     </div>
+   <div class="center">
+      <input type="checkbox" id="show2">
+      <div class="container">
+         <label for="show2" class="close-btn fas fa-times" title="close"></label>
+         <div class="text">
+            Kreirajte nalog!
+         </div>
+         <form id="formsignin" novalidate>
+          <div class="data">
+            <label>Ime:</label>
+            <input type="text" id="getName" >
+          </div>
+          <div class="data">
+            <label>Prezime:</label>
+            <input type="text" id="getLastName" >
+          </div>
+          <div class="data">
+            <label>Email:</label>
+            <input type="email" id="getEmail" >
+          </div>
+          <div class="data">
+            <label>Datum rodjenja:</label>
+            <input type="date" id="getDate" >
+          </div>
+          <div class="data">
+            <label>Adresa:</label>
+            <input type="text" id="getAdress" >
+          </div>
+          <div class="data">
+            <label>Broj telefona:</label>
+            <input type="text" id="getPhone" >
+          </div>
+          <div class="data">
+            <label>Korisnicko ime:</label>
+            <input type="text" id="getUserNameSignIn" >
+          </div>
+          <div class="data">
+            <label>Lozinka:</label>
+            <input type="password" id="getPasswordSignIn" >
+          </div>
+          <div class="btn">
+            <div class="inner"></div>
+            <button type="submit" id="open-popup-btn">Register</button>
+          </div>
+        </form>
+      </div>
+   </div>
+<!-- ------------------------------------------------------------------------------- -->
+<!-- dialog -->
+<!-- ------------------------------------------------------------------------------- -->
+<div class="popup center" id="pass">
+ <div class="icon">
+    <i class="fa fa-check"></i>
+ </div>
+
+ <div class="title" id = "popuptitle"> 
+  Uspesno ste se registrovali
+ </div>
+    
+ <div class="description" id="desc">
+  Zakazite putovanje vec danas!
+ </div>
+
+ <div class="dismiss-btn">
+    <button id="dismiss">Potvrdi</button>
+ </div>
+</div>
+
+<div class="popup center" id="fail">
+<div class="icon" style=" border: 2px solid red;">
+  <i class="fa fa-times" style=" font-size: 30px; color: red;"></i>
+</div>
+
+<div class="title" id = "popuptitle1"> 
+  Registracija nije uspela
+</div>
+   
+<div class="description" id="desc1">
+  Unesite ispravne podatke
+</div>
+
+<div class="dismiss-btn">
+   <button id="dismiss1">Potvrdi</button>
+</div>
+</div>
+
+
     <header style="color: whitesmoke;">
         <div class="header-content">
             <h2>OVDE LETO JE TRIPUT VRELIJE</h2>
@@ -141,7 +181,6 @@
             <th>Telefon</th>
             <th>Destinacije</th>
             <th>Delete</th>
-            <th>Kreiraj novu destinaciju</th>
          </tr>
       </thead>
       <tbody>
@@ -153,18 +192,23 @@
             <td data-label="Telefon">011/7872-78423</td>
             <td data-label = "Destinacije"></td>
             <td><button class="delete-btn-agency">Delete</button></td>
-            <td><button class="create">Kreiraj destinaciju</button></td>
          </tr>
       </tbody>
    </table>
     </div>
-     <!-- Update Button -->
-  <div class="updateBtn">
-   <button  onclick="editTableDisplay()">Update data</button>
+
+
+
+<div class="updateBtn">
+   <button id="edit" onclick="editTableDisplay()">Izmeni agenciju</button>
+</div>
+
+<div class="updateBtn">
+   <button id="create" onclick="editTableDisplay1()">Kreiraj novu destinaciju</button>
 </div>
 
 <!-- Edit table -->
-<div class="editTable">
+<div id="editTable" class="editTable" style="display: none;">
    <div class="left">Naziv: </div><div class="right"><input type="text" name="fname" id="formagencyname"></div><br><br>
    <div class="left">Adresa: </div><div class="right"><input type="text" name="lname" id="formagencyadress"></div><br><br>
    <div class="left">Godina: </div><div class="right"><input type="text" name="country" id="formagencyyear"></div><br><br>
@@ -181,9 +225,22 @@
       </div>
 
    </fieldset>
-   
-   <button onclick="editTableDisplay();" class="editRowBtn" id="editRowBtn1">Update</button><br><br>
-</div>   
+   <button onclick="editTableDisplay();" class="editRowBtn" id="editRowBtn1">Izmeni</button><br><br>
+</div>
+
+<div id="createTable" class="editTable" style="display: none;">
+   <div class="left">Agencija: </div><div class="right"><input type="text" name="fname" id="createagency"></div><br><br>
+   <div class="left">Naziv destinacije: </div><div class="right"><input type="text" name="lname" id="createname"></div><br><br>
+   <div class="left">Opis: </div><div class="right"><input type="text" name="country" id="createdata"></div><br><br>
+   <div class="left">Tip: </div><div class="right"><input type="text" name="mNumber" id="createtype"></div><br><br>
+   <div class="left">Max osoba: </div><div class="right"><input type="text" name="mNumber" id="createmax"></div><br><br>
+   <div class="left">Slika: </div><div class="right"><input type="text" name="mNumber" id="createpic"></div><br><br>
+   <button onclick="registerAgency() ;" class="editRowBtn" id="addRowBtn1">Dodaj</button><br><br>
+</div>
+
+
+
+
 
 
 
@@ -262,11 +319,31 @@
 
 
 
-   
-    <section class="footer">
-        <p>Trg Dositeja Obradovića 6, 21102 Novi Sad | Telefon: (+381) 21 211 212, (+381) 23 345 567 | Fax: (+381) 12 123 456 | E-mail: contact@uns.ac.rs</p>
-    </section>
+<section class="footer">
+
+   <div class="footer-grid">
+     <div class="footer-item">
+       <p class="footer-label">Adresa:</p>
+       <p id="footeradress">Trg Dositeja Obradovića 6, 21102 Novi Sad</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Fax:</p>
+       <p id="footeryear">(+381) 12 123 456</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Broj Telefona:</p>
+       <p id="footerphone">(+381) 21 211 212, (+381) 23 345 567</p>
+     </div>
+     <div class="footer-item">
+       <p class="footer-label">Email:</p>
+       <p id="footeremail">contact@uns.ac.rs</p>
+     </div>
+   </div>
+ </section>
+ <script src="loginsignin.js"></script>
     <script src="agencies.js"></script>
     <script src="editagencies.js"></script>
+    
+    <script src="addDestination.js"></script>
 </body>
 </html>

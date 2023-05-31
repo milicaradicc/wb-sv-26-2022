@@ -36,23 +36,15 @@ table.addEventListener("click", function(event) {
         var phone = cells[5].innerHTML;
         var address = cells[6].innerHTML;
 
-        //popuni frejm
         document.getElementById("formusername").value = username;
         document.getElementById("fname").value = name;
         document.getElementById("lname").value = lastname;
         document.getElementById("formemailclient").value = email;
         document.getElementById("formdate").value = date;
         document.getElementById("formphoneclient").value = phone;
-        document.getElementById("formadressclient").value = address;
-
-        //document.getElementById("edit-form").style.display = "block";
-        cells[1].innerHTML = name;
-        console.log(cells[1].innerHTML);
-        cells[2].innerHTML = document.getElementById("lname").value;
-        
+        document.getElementById("formadressclient").value = address;        
     }
 });
- // Data Update Table Here
  function editTableDisplay(){
      document.querySelector('.editTable').setAttribute('style', 'display: block;')
  }
@@ -85,9 +77,9 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete broj telefona!";
     }    
-    if (!updatedDate.match(/^[\d\/-]+$/)) {
+    if (!updatedDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
         update = false;
-        message = "Unesite validan datum, samo brojevi i -";
+        message = "Unesite validan datum, yyyy/mm/dd";
     }
     if (updatedDate=== "" || updatedDate === null) {
         update = false;
@@ -119,7 +111,7 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         document.getElementById("description").innerHTML = message;
         document.getElementById("proslo").classList.add("active");
         document.getElementById("dismiss-popup-btn").addEventListener("click", function() {
-          document.getElementsByClassName("popup")[0].classList.remove("active");
+          document.getElementsByClassName("popup")[2].classList.remove("active");
         });
         console.log(users);
         for (var id in users) {
@@ -140,11 +132,10 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
           }
         }
       } else {
-        // Neuspesna registracija
         document.getElementById("description1").innerHTML = message;
         document.getElementById("nijeProslo").classList.add("active");
         document.getElementById("dismiss-popup-btn1").addEventListener("click", function() {
-            document.getElementsByClassName("popup")[1].classList.remove("active");
+            document.getElementsByClassName("popup")[3].classList.remove("active");
         });
       }
       
@@ -157,19 +148,15 @@ table.addEventListener("click", function(event) {
       var row = target.parentNode.parentNode;
       console.log(row);
   
-      // Prikazivanje potvrde brisanja korisnika (popup-a)
       document.getElementById("areYouSure").classList.add("active");
-  
-      // Dugme za odbijanje potvrde brisanja
+  console.log(document.getElementsByClassName("popup"))
       document.getElementById("dismiss-popup-btn2").addEventListener("click", function() {
-        document.getElementsByClassName("popup")[2].classList.remove("active");
+        document.getElementsByClassName("popup")[4].classList.remove("active");
       });
   
-      // Dugme za potvrdu brisanja
       document.getElementById("ok-popup-btn").addEventListener("click", function() {
-        document.getElementsByClassName("popup")[2].classList.remove("active");
+        document.getElementsByClassName("popup")[4].classList.remove("active");
         
-        // Inicijalizacija XMLHttpRequest objekta
         var httpRequest = new XMLHttpRequest();
   
         for (var id in users) {
@@ -178,10 +165,9 @@ table.addEventListener("click", function(event) {
             httpRequest.onreadystatechange = function() {
               if (this.readyState == 4) {
                 if (this.status == 200) {
-                  // Obrada uspešnog brisanja korisnika
                   document.getElementById("obrisano").classList.add("active");
                   document.getElementById("dismiss-popup-btn3").addEventListener("click", function() {
-                    document.getElementsByClassName("popup")[3].classList.remove("active");
+                    document.getElementsByClassName("popup")[5].classList.remove("active");
                   });
                   row.parentNode.removeChild(row);
                 } else {
@@ -198,7 +184,3 @@ table.addEventListener("click", function(event) {
     }
   });
   
-
-
-// var red = dugme.parentNode.parentNode; // Dohvati roditeljski red dugmeta
-// red.parentNode.removeChild(red)

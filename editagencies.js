@@ -84,10 +84,15 @@ table.addEventListener("click", function(event) {
 
 
  // Data Update Table Here
- function editTableDisplay(){
-     document.querySelector('.editTable').setAttribute('style', 'display: block;')
- }
+ function editTableDisplay() {
+  document.getElementById("editTable").style.display = "block";
+  document.getElementById("createTable").style.display = "none";
+}
 
+function editTableDisplay1() {
+  document.getElementById("createTable").style.display = "block";
+  document.getElementById("editTable").style.display = "none";
+}
 
 
 document.getElementById("editRowBtn1").addEventListener("click",function(){
@@ -133,17 +138,13 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete adresu";
     }
-    if (!updatedagencyphone.match(/^\d+$/)) {
-        update = false;
-        message = "Broj telefona mora da sadrzi samo cifre";
-    }
     if (updatedagencyphone === "" || updatedagencyphone === null) {
         update = false;
         message = "Morate da unesete broj telefona!";
     }    
-    if(!updatedagencyphone.match(/^[\d/]+$/)){
+    if(!updatedagencyphone.match(/^\d{3}\/\d{4}-\d{6}$/)){
       update = false;
-      message = "Format broja telefona nije dobar koristite brojeve i /"
+      message = "Format broja telefona nije dobar koristite format 000/0000-00000";
     }
     if (!updatedagencyyear.match(/^\d+$/)) {
         update = false;
@@ -170,10 +171,10 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
     if (update) {
         message = "Refresujte stranicu";
         console.log(document.getElementsByClassName("popup"));
-        document.getElementById("description5").innerHTML = message;
+        document.getElementById("description4").innerHTML = message;
         document.getElementById("proslo1").classList.add("active");
         document.getElementById("dismiss-popup-btn0.1").addEventListener("click", function() {
-          document.getElementsByClassName("popup")[0].classList.remove("active");
+          document.getElementsByClassName("popup")[2].classList.remove("active");
         });
         console.log(oldname);
         for (var id in agencies) {
@@ -198,7 +199,7 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
         document.getElementById("nijeProslo1").classList.add("active");
         console.log(document.getElementsByClassName("popup"));
         document.getElementById("dismiss-popup-btn1.1").addEventListener("click", function() {
-            document.getElementsByClassName("popup")[1].classList.remove("active");
+            document.getElementsByClassName("popup")[3].classList.remove("active");
         });
       }
       
@@ -216,20 +217,20 @@ table.addEventListener("click", function(event) {
 
       // Dugme za odbijanje potvrde brisanja
       document.getElementById("dismiss-popup-btn2.1").addEventListener("click", function() {
-        document.getElementsByClassName("popup")[2].classList.remove("active");
+        document.getElementsByClassName("popup")[4].classList.remove("active");
       });
   
       // Dugme za potvrdu brisanja
       document.getElementById("ok-popup-btn0.1").addEventListener("click", function() {
-        document.getElementsByClassName("popup")[2].classList.remove("active");
+        document.getElementsByClassName("popup")[4].classList.remove("active");
         console.log(document.getElementsByClassName("popup"));
 
         // Inicijalizacija XMLHttpRequest objekta
         var httpRequest = new XMLHttpRequest();
-        console.log(destinations);
-        for(var id in destinations) {
+        console.log(agencies);
+        for(var id in agencies) {
           console.log(id);
-          if (destinations[id]['naziv'] === row.children[0].textContent) {
+          if (agencies[id]['naziv'] === row.children[0].textContent) {
             console.log(id);
             httpRequest.onreadystatechange = function() {
               if (this.readyState == 4) {
@@ -238,7 +239,7 @@ table.addEventListener("click", function(event) {
                   console.log(document.getElementsByClassName("popup"));
                   document.getElementById("obrisano1").classList.add("active");
                   document.getElementById("dismiss-popup-btn3.1").addEventListener("click", function() {
-                    document.getElementsByClassName("popup")[3].classList.remove("active");
+                    document.getElementsByClassName("popup")[5].classList.remove("active");
                   });
                   row.parentNode.removeChild(row);
                 } else {

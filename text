@@ -1,21 +1,72 @@
-<section class="footer">
+var firebaseUrl = "https://webprojekat-5430f-default-rtdb.europe-west1.firebasedatabase.app";
 
-  <div class="footer-grid">
-    <div class="footer-item">
-      <p class="footer-label">Adresa:</p>
-      <p id="footeradress">Trg Dositeja Obradovića 6, 21102 Novi Sad</p>
-    </div>
-    <div class="footer-item">
-      <p class="footer-label">Fax:</p>
-      <p id="footeryear">(+381) 12 123 456</p>
-    </div>
-    <div class="footer-item">
-      <p class="footer-label">Broj Telefona:</p>
-      <p id="footerphone">(+381) 21 211 212, (+381) 23 345 567</p>
-    </div>
-    <div class="footer-item">
-      <p class="footer-label">Email:</p>
-      <p id="footeremail">contact@uns.ac.rs</p>
-    </div>
-  </div>
-</section>
+var agenciesID = [];
+var agencies = {};
+
+var httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (this.status == 200) {
+      agencies = JSON.parse(httpRequest.responseText);
+      console.log(agencies);
+      for (var id in agencies) {
+        var agency = agencies[id];
+        console.log(id);
+
+        var original = document.getElementById("row");
+        var clone = original.cloneNode(true);
+        clone.id = "";
+        original.parentNode.appendChild(clone);
+
+        var agencyname = clone.children[0];
+        var agencyadress = clone.children[1];
+        var agencyyear = clone.children[2];
+        var agencyemail = clone.children[3];
+        var agencyphone = clone.children[4];
+        var agencydestinations = clone.children[5];
+
+        agencyname.innerHTML = agency["naziv"];
+        agencyadress.innerHTML = agency["adresa"];
+        agencyyear.innerHTML = agency["godina"];
+        agencyemail.innerHTML = agency["email"];
+        agencyphone.innerHTML = agency["brojTelefona"];
+
+        getDestinations(agencydestinations, agency.destinacije);
+      }
+      document.getElementById("row").style.display = "none";
+    } else {
+      alert("Error occurred. Agencies could not be loaded.");
+    }
+  }
+};
+httpRequest.open("GET", firebaseUrl + "/agencije.json");
+httpRequest.send();
+
+function getDestinations(agencydestinations, destinationsID) {
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.onreadystatechange = function () {
+    if (this.readyState == 4) {
+      if (this.status == 200) {
+        var destinations = JSON.parse(httpRequest.responseText);
+        console.log(destinations);
+
+        var destinationList = [];
+        console.log(destinations);
+        for (var destinationID in destinations) {
+          console.log(destinationID);
+          if (destinationID === destinationsID) {
+            for (var dID in destinations[destinationID]) {
+              destinationList.push(" " + destinations[destinationID][dID]["naziv"]);
+            }
+          }
+        }
+        console.log(destinationList);
+        agencydestinations.innerHTML = destinationList.join(", ");
+      } else {
+        alert("Error occurred. Destinations could not be loaded.");
+      }
+    }
+  };
+  httpRequest.open("GET", firebaseUrl + "/destinacije.json");
+  httpRequest.send();
+}
