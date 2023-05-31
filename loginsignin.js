@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
         confirm.innerHTML = "Uspesno ste se registrovali";
         message.innerHTML = "Zakazite putovanje vec danas";
         document.getElementsByClassName("popup")[0].classList.add("active");
-        document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
+        document.getElementById("dismiss").addEventListener("click",function(){
             document.getElementsByClassName("popup")[0].classList.remove("active");
         })
         
@@ -127,9 +127,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       } else {
         // Neuspesna registracija
-        document.getElementsByClassName("popup")[0].classList.add("active");
-        document.getElementById("dismiss-popup-btn").addEventListener("click",function(){
-            document.getElementsByClassName("popup")[0].classList.remove("active");
+        document.getElementById('fail').classList.add("active");
+        document.getElementById("dismiss1").addEventListener("click",function(){
+            document.getElementsByClassName("popup")[1].classList.remove("active");
         })
       }
     });

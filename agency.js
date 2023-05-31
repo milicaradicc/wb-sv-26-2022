@@ -5,7 +5,6 @@ var urlParams = new URLSearchParams(queryParams);
 var id = urlParams.get("id");
 console.log(id);
 
-// Uzimam agenciju koju prikazujem
 var agencyRequest = new XMLHttpRequest();
 agencyRequest.onreadystatechange = function() {
   if (this.readyState == 4) {

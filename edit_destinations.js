@@ -107,23 +107,6 @@ document.getElementById("editRowBtnn").addEventListener("click",function(){
         document.getElementById("dismiss-popup-btnn").addEventListener("click", function() {
           document.getElementsByClassName("popup")[0].classList.remove("active");
         });
-        console.log(oldname);
-        for (var id in destinations) {
-            destinations[id]['naziv'] === updatedname;
-            destinations[id]['opis'] = updateddata;
-            destinations[id]['tip'] = updatedtype;
-            destinations[id]['prevoz'] = updatedtravel;
-            destinations[id]['maxOsoba'] = updatedmax;
-            destinations[id]['cena'] = updatedprice;
-            destinations[id]['slika'] = updatedpicture;
-      
-            var putRequest = new XMLHttpRequest();
-            putRequest.open('PUT', firebaseUrl + '/destinacije/' + id + '.json', true);
-            putRequest.setRequestHeader('Content-Type', 'application/json');
-            console.log(JSON.stringify(destinations[id]));
-            putRequest.send(JSON.stringify(destinations[id]));
-          
-        }
       } else {
         // Neuspesna registracija
         document.getElementById("descriptionn").innerHTML = message;

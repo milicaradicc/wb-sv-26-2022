@@ -1,67 +1,88 @@
 var firebaseUrl = "https://webprojekat-5430f-default-rtdb.europe-west1.firebasedatabase.app";
 var destinations = {};
 var destinationsID = []
+var agencies = {};
 var request=new XMLHttpRequest();
-var oldname;
 request.onreadystatechange=function(){
     if (this.readyState == 4) {
         if (this.status == 200) {
-            destinations = JSON.parse(request.responseText);
+          agencies= JSON.parse(request.responseText);
         } else {
             window.location.href = "greska.html";
         }
     }
 }
-request.open('GET', firebaseUrl + '/destinacije.json');
+request.open('GET', firebaseUrl + '/agencije.json');
 request.send();
+
+console.log(agencies);
+
 var table = document.getElementById("table");
 var body = table.querySelector("tbody");
 var cells;
 
 table.addEventListener("click", function(event) {
-    var target = event.target;
-    if (target.tagName === "TD" && target.parentNode !== body.firstElementChild) {
-        var row = target.parentNode;
-        cells = row.getElementsByTagName("td");
-        console.log(cells);
+  var target = event.target;
+  if (target.tagName === "TD" && target.parentNode !== body.firstElementChild) {
+    var row = target.parentNode;
+    cells = row.getElementsByTagName("td");
+    console.log(cells);
 
+    var checkboxesContainer = document.getElementById("check");
+    checkboxesContainer.innerHTML = ""; // Clear the container before adding new checkboxes
 
-        var agencyname = cells[0].innerHTML;
-        oldname = cells[0].innerHTML;
-        var agencyadress = cells[1].innerHTML;
-        var agencyyear = cells[2].innerHTML;
-        var agencyemail = cells[3].innerHTML;
-        var agencyphone = cells[4].innerHTML;
-        var agencydest = cells[5].innerHTML.split(",").map(item => item.trim());
-        console.log(agencydest);
+    var agencyname = cells[0].innerHTML;
+    oldname = cells[0].innerHTML;
+    var agencyadress = cells[1].innerHTML;
+    var agencyyear = cells[2].innerHTML;
+    var agencyemail = cells[3].innerHTML;
+    var agencyphone = cells[4].innerHTML;
+    var agencydest = cells[5].innerHTML.split(",").map(item => item.trim());
+    console.log(agencydest);
 
-        //popuni frejm
-        document.getElementById("formagencyname").value = agencyname;
-        document.getElementById("formagencyadress").value = agencyadress;
-        document.getElementById("formagencyyear").value = agencyyear;
-        document.getElementById("formagencyemail").value = agencyemail;
-        document.getElementById("formagencyphone").value = agencyphone;
-        for (var groupID in destinations) {
-          for (var id in destinations[groupID]) {
-             var original = document.getElementById("check");
-      
-             var clone = original.cloneNode(true);
-             clone.id = "";
-             original.parentNode.appendChild(clone);
-             console.log(clone);
-             clone.children[0].children[1].innerHTML = destinations[groupID][id]['naziv'];
-             if (agencydest.includes(destinations[groupID][id]['naziv'])) {
-                clone.children[0].children[0].checked = true;
-             }else{
-              clone.children[0].children[0].checked = false;
-             }
+    // Populate form
+    document.getElementById("formagencyname").value = agencyname;
+    document.getElementById("formagencyadress").value = agencyadress;
+    document.getElementById("formagencyyear").value = agencyyear;
+    document.getElementById("formagencyemail").value = agencyemail;
+    document.getElementById("formagencyphone").value = agencyphone;
+
+    var addedDestinations = []; // Track added destination values
+
+    for (var groupID in destinations) {
+      for (var id in destinations[groupID]) {
+        var destinationValue = destinations[groupID][id]['naziv'];
+
+        if (!addedDestinations.includes(destinationValue)) {
+          var checkboxDiv = document.createElement("div");
+          checkboxDiv.style.margin = "0.4rem";
+          var checkbox = document.createElement("input");
+          checkbox.className = "ch";
+          checkbox.style.display = "inline-block";
+          checkbox.type = "checkbox";
+          checkboxDiv.appendChild(checkbox);
+          var label = document.createElement("label");
+          label.innerHTML = destinationValue;
+          checkboxDiv.appendChild(label);
+          checkboxesContainer.appendChild(checkboxDiv);
+
+          if (agencydest.includes(destinationValue)) {
+            checkbox.checked = true;
+            checkbox.value = destinationValue;
+          } else {
+            checkbox.checked = false;
           }
-       }
-       
-       document.getElementById("check").style.display = "none";
-        
+
+          addedDestinations.push(destinationValue); // Add the destination value to the addedDestinations array
+        }
+      }
     }
+
+    checkboxesContainer.style.display = "block"; // Show the checkboxes container
+  }
 });
+
+
  // Data Update Table Here
  function editTableDisplay(){
      document.querySelector('.editTable').setAttribute('style', 'display: block;')
@@ -70,6 +91,32 @@ table.addEventListener("click", function(event) {
 
 
 document.getElementById("editRowBtn1").addEventListener("click",function(){
+    var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    var list = [];
+    // Prikazivanje vrednosti selektovanih checkboxova
+    for (var i = 0; i < checkedCheckboxes.length; i++) {
+      var checkbox = checkedCheckboxes[i];
+      var checkboxValue = checkbox.value;
+      list.push(checkboxValue);
+    }
+    console.log(list);
+
+    var destinationsRequest=new XMLHttpRequest();
+    destinationsRequest.onreadystatechange=function(){
+      if (this.readyState == 4) {
+          if (this.status == 200) {
+           destinations= JSON.parse(destinationsRequest.responseText);
+          } else {
+              window.location.href = "error.html";
+            }
+        }
+    }
+    destinationsRequest.open('GET', firebaseUrl + '/destinacije.json');
+    destinationsRequest.send();
+
+    console.log(destinations);
+    console.log(agencies);
+
     var updatedagencyname = document.getElementById("formagencyname").value;
     var updatedagencyadress = document.getElementById("formagencyadress").value;
     var updatedagencyyear = document.getElementById("formagencyyear").value;
@@ -118,41 +165,35 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete naziv agencije";
     }
-    for(var id in destinations){
-      destinationsID.push(destinations[id]['korisnickoIme'])
-    }
-
-    if(destinationsID.includes(updatedagencyname) && updatedagencyname != oldname){
-        update = false;
-        message  = "Vec postoji agencija sa ovim imenom"
-    }
 
     console.log(update);
     if (update) {
         message = "Refresujte stranicu";
-        document.getElementById("description4").innerHTML = message;
+        console.log(document.getElementsByClassName("popup"));
+        document.getElementById("description5").innerHTML = message;
         document.getElementById("proslo1").classList.add("active");
         document.getElementById("dismiss-popup-btn0.1").addEventListener("click", function() {
           document.getElementsByClassName("popup")[0].classList.remove("active");
         });
         console.log(oldname);
-        for (var id in destinations) {
-          if (destinations[id]['naziv'] === oldname) {
-            destinations[id]['adresa'] = updatedagencyadress;
-            destinations[id]['brojTelefona'] = updatedagencyphone;
-            destinations[id]['email'] = updatedagencyemail;
-            destinations[id]['naziv'] = updatedagencyname;
-            destinations[id]['godina'] = updatedagencyyear;
+        for (var id in agencies) {
+          if (agencies[id]['naziv'] === oldname) {
+            agencies[id]['adresa'] = updatedagencyadress;
+            agencies[id]['brojTelefona'] = updatedagencyphone;
+            agencies[id]['email'] = updatedagencyemail;
+            agencies[id]['naziv'] = updatedagencyname;
+            agencies[id]['godina'] = updatedagencyyear;
+
+            changeDestinationGroup(destinations,list, agencies[id]['destinacije'],id);
       
             var putRequest = new XMLHttpRequest();
             putRequest.open('PUT', firebaseUrl + '/agencije/' + id + '.json', true);
             putRequest.setRequestHeader('Content-Type', 'application/json');
-            console.log(JSON.stringify(destinations[id]));
-            putRequest.send(JSON.stringify(destinations[id]));
+            console.log(JSON.stringify(agencies[id]));
+            putRequest.send(JSON.stringify(agencies[id]));
           }
         }
       } else {
-        // Neuspesna registracija
         document.getElementById("description5").innerHTML = message;
         document.getElementById("nijeProslo1").classList.add("active");
         console.log(document.getElementsByClassName("popup"));
@@ -225,3 +266,36 @@ table.addEventListener("click", function(event) {
 
     }
   });
+
+function changeDestinationGroup(destinations,list,ID,id){
+    var newDest = {}; // Empty object
+
+    for (var groupId in destinations) {
+      for (var Id in destinations[groupId]) {
+        if (list.includes(destinations[groupId][Id]["naziv"])) {
+          newDest[Id] = destinations[groupId][Id];
+          var index = list.indexOf(destinations[groupId][Id]["naziv"]);
+          if (index > -1) {
+            list.splice(index, 1); // Remove the destination name from the list array
+          }
+        }
+      }
+    }
+    
+    console.log(newDest);
+    for(var groupId in destinations){
+      if(groupId === agencies[id]['destinacije']){
+        destinations[groupId] = newDest;
+        break;
+      }
+    }
+    console.log(newDest);
+    console.log(destinations[groupId]);
+
+    var putRequest = new XMLHttpRequest();
+    putRequest.open('PUT', firebaseUrl + '/destinacije/' + id + '.json', true);
+    putRequest.setRequestHeader('Content-Type', 'application/json');
+    console.log(JSON.stringify(destinations[ID]));
+    putRequest.send(JSON.stringify(destinations[ID]));
+
+  }

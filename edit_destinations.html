@@ -51,78 +51,78 @@
       </div>
     </nav>
 
-      <div class="center">
-        <input type="checkbox" id="show">
-        <div class="container">
-           <label for="show" class="close-btn fas fa-times" title="close"></label>
-           <div class="text">Ulogujte se🌴</div>
-           <form action="#">
-              <div class="data">
-                 <label>Telefon ili Email: </label>
-                 <input type="text" required>
-              </div>
-              <div class="data">
-                 <label>Lozinka: </label>
-                 <input type="password" required>
-              </div>
-              <div class="btn">
-                 <div class="inner"></div>
-                 <button type="submit">login</button>
-              </div>
-              <div class="signup-link">
-                 Nemate nalog? <a><label for="show2" class="show-btn" href="#">Registrujte se!</label></a>
-              </div>
-           </form>
-        </div>
-     </div>
+    <div class="center">
+      <input type="checkbox" id="show">
+      <div class="container">
+         <label for="show" class="close-btn fas fa-times" title="close"></label>
+         <div class="text">Ulogujte se🌴</div>
+         <form id="formlogin" novalidate>
+            <div class="data">
+               <label>Korisnicko ime: </label>
+               <input id="loginusername" type="text">
+            </div>
+            <div class="data">
+               <label>Lozinka: </label>
+               <input id="loginpassword" type="password">
+            </div>
+            <div class="btn">
+               <div class="inner"></div>
+               <button type="submit">login</button>
+            </div>
+            <div class="signup-link">
+               Nemate nalog? <a><label for="show2" class="show-btn">Registrujte se!</label></a>
+            </div>
+         </form>
+      </div>
+   </div>
 
-     <div class="center">
-        <input type="checkbox" id="show2">
-        <div class="container">
-           <label for="show2" class="close-btn fas fa-times" title="close"></label>
-           <div class="text">
-              Kreirajte nalog!
-           </div>
-           <form action="#">
-               <div class="data">
-                   <label>Ime: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>Prezime: </label>
-                   <input type="text" required>
-                </div>
-                <div class="data">
-                   <label>Email: </label>
-                   <input type="email" required>
-                </div>
-                <div class="data">
-                   <label>Datum rodjenja: </label>
-                   <input type="date" required>
-                </div>
-                <div class="data">
-                   <label>Adresa:</label>
-                   <input type="data" required>
-                </div>
-               <div class="data">
-                   <label>Broj telefona: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Korisnicko ime: </label>
-                   <input type="data" required>
-               </div>
-               <div class="data">
-                   <label>Lozinka: </label>
-                   <input type="password" required>
-               </div>
-              <div class="btn">
-                 <div class="inner"></div>
-                 <button type="submit">Register</button>
-              </div>
-           </form>
-        </div>
-     </div>
+   <div class="center">
+      <input type="checkbox" id="show2">
+      <div class="container">
+         <label for="show2" class="close-btn fas fa-times" title="close"></label>
+         <div class="text">
+            Kreirajte nalog!
+         </div>
+         <form id="formsignin" novalidate>
+          <div class="data">
+            <label>Ime:</label>
+            <input type="text" id="getName" >
+          </div>
+          <div class="data">
+            <label>Prezime:</label>
+            <input type="text" id="getLastName" >
+          </div>
+          <div class="data">
+            <label>Email:</label>
+            <input type="email" id="getEmail" >
+          </div>
+          <div class="data">
+            <label>Datum rodjenja:</label>
+            <input type="date" id="getDate" >
+          </div>
+          <div class="data">
+            <label>Adresa:</label>
+            <input type="text" id="getAdress" >
+          </div>
+          <div class="data">
+            <label>Broj telefona:</label>
+            <input type="text" id="getPhone" >
+          </div>
+          <div class="data">
+            <label>Korisnicko ime:</label>
+            <input type="text" id="getUserNameSignIn" >
+          </div>
+          <div class="data">
+            <label>Lozinka:</label>
+            <input type="password" id="getPasswordSignIn" >
+          </div>
+          <div class="btn">
+            <div class="inner"></div>
+            <button type="submit" id="open-popup-btn">Register</button>
+          </div>
+        </form>
+      </div>
+   </div>
     <header style="color: whitesmoke;">
         <div class="header-content">
             <h2>OVDE LETO JE TRIPUT VRELIJE</h2>
