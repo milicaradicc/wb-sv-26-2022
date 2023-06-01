@@ -7,4 +7,4 @@ Projekat iz Web dizajna, predmeta drugog semestra smera "Softversko inženjerstv
 Ovaj projekat predstavla front-end deo za web sat koji objedinjuje turisticke agencije. 
 Koriscene tehnologije : HTML, CSS, JavaScript. Podaci prikazani na sajtu se ucitavaju iz FireBase Realtime Database (https://webprojekat-5430f-default-rtdb.europe-west1.firebasedatabase.app/).
 
-Stranice za editovanje omogucuju brisanje, dodavanje i izmenu entiteta. Klikom na red tabele u kojoj su prikazani podaci omogucena je prefilled opcija tokom izmene entiteta. Validacija podrazumeva popup forme koje donose vise informacija o greskama korisnika
+Stranice za editovanje omogucuju brisanje, dodavanje i izmenu entiteta. Klikom na red tabele u kojoj su prikazani podaci omogucena je prefilled opcija tokom izmene entiteta. Validacija podrazumeva popup forme koje donose vise informacija o greskama korisnika    
