@@ -17,11 +17,13 @@ request.send();
 var table = document.getElementById("table");
 var body = table.querySelector("tbody");
 var cells;
+var row;
 
 table.addEventListener("click", function(event) {
     var target = event.target;
     if (target.tagName === "TD" && target.parentNode !== body.firstElementChild) {
-        var row = target.parentNode;
+        row = target.parentNode;
+        console.log(row)
         cells = row.getElementsByTagName("td");
         console.log(cells);
         var username = cells[0].innerHTML;
@@ -45,6 +47,7 @@ table.addEventListener("click", function(event) {
         document.getElementById("formadressclient").value = address;        
     }
 });
+
  function editTableDisplay(){
      document.querySelector('.editTable').setAttribute('style', 'display: block;')
  }
@@ -126,6 +129,18 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
             users[id]['korisnickoIme'] = updatedUserName;
             users[id]['prezime'] = updatedLastName;
             users[id]['telefon'] = updatedPhoneClient;
+
+            
+
+            row.children[0].innerHTML = updatedUserName;
+            row.children[1].innerHTML = updatedName;
+            row.children[2].innerHTML = updatedLastName;
+            row.children[3].innerHTML = updatedEmailClient;
+            row.children[4].innerHTML = updatedDate;
+            row.children[5].innerHTML = updatedPhoneClient;
+            row.children[6].innerHTML = updatedAdressClient;
+
+            console.log(row)
       
             var putRequest = new XMLHttpRequest();
             putRequest.open('PUT', firebaseUrl + '/korisnici/' + id + '.json', true);
@@ -174,7 +189,7 @@ table.addEventListener("click", function(event) {
                   });
                   row.parentNode.removeChild(row);
                 } else {
-                  window.location.href = "greska.html";
+                  window.location.href = "error.html";
                 }
               }
             };

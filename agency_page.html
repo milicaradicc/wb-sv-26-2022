@@ -172,13 +172,33 @@
     </header>
     <section>
         <h2 class="tittle">Izaberite zeljenu destinaciju</h2>
-
+         
+        <form id="search-form2">
+          <div class="form-group">
+            <label for="name-search">Naziv destinacije</label>
+            <input type="text" id="name-search" placeholder="naziv" class="new">
+          </div>
+          <div class="form-group">
+            <label for="type-search">Tip putovanja</label>
+            <select class="new" id="type-search">
+              <option value="0">Tip putovanja</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ride-search">Vrsta prevoza</label>
+            <select class="new" id="ride-search">
+              <option value="0">Vrsta prevoza</option>
+            </select>
+          </div>
+          <input type="submit" value="Pretraži" id="pretraga-btn" class="btn btn-warning">
+        </form>
+        
         <div class="card-container">
             <div id="cards1">
             <div class="card" href="destination.html">
                 <img src="" alt="">
                 <div class="card-content">
-                    <h4>TEST</h4>
+                    <h4 style="text-transform: uppercase;">TEST</h4>
                     <p class="list-group-item">TEST</p>
                     <a class="ctn" href="destination.html">Pogledajte ponudu ➡ </a>
                 </div>

@@ -65,7 +65,7 @@ table.addEventListener("click", function(event) {
           label.innerHTML = destinationValue;
           checkboxDiv.appendChild(label);
           checkboxesContainer.appendChild(checkboxDiv);
-
+          checkbox.value = destinationValue;
           if (agencydest.includes(destinationValue)) {
             checkbox.checked = true;
             checkbox.value = destinationValue;
@@ -73,17 +73,16 @@ table.addEventListener("click", function(event) {
             checkbox.checked = false;
           }
 
-          addedDestinations.push(destinationValue); // Add the destination value to the addedDestinations array
+          addedDestinations.push(destinationValue); 
         }
       }
     }
 
-    checkboxesContainer.style.display = "block"; // Show the checkboxes container
+    checkboxesContainer.style.display = "block"; 
   }
 });
 
 
- // Data Update Table Here
  function editTableDisplay() {
   document.getElementById("editTable").style.display = "block";
   document.getElementById("createTable").style.display = "none";
@@ -98,9 +97,10 @@ function editTableDisplay1() {
 document.getElementById("editRowBtn1").addEventListener("click",function(){
     var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     var list = [];
-    // Prikazivanje vrednosti selektovanih checkboxova
+    //prikazivanje vrednosti selektovanih checkboxova
     for (var i = 0; i < checkedCheckboxes.length; i++) {
       var checkbox = checkedCheckboxes[i];
+      console.log(checkbox)
       var checkboxValue = checkbox.value;
       list.push(checkboxValue);
     }
@@ -225,7 +225,6 @@ table.addEventListener("click", function(event) {
         document.getElementsByClassName("popup")[4].classList.remove("active");
         console.log(document.getElementsByClassName("popup"));
 
-        // Inicijalizacija XMLHttpRequest objekta
         var httpRequest = new XMLHttpRequest();
         console.log(agencies);
         for(var id in agencies) {
@@ -269,7 +268,7 @@ table.addEventListener("click", function(event) {
   });
 
 function changeDestinationGroup(destinations,list,ID,id){
-    var newDest = {}; // Empty object
+    var newDest = {}; 
 
     for (var groupId in destinations) {
       for (var Id in destinations[groupId]) {
@@ -277,12 +276,13 @@ function changeDestinationGroup(destinations,list,ID,id){
           newDest[Id] = destinations[groupId][Id];
           var index = list.indexOf(destinations[groupId][Id]["naziv"]);
           if (index > -1) {
-            list.splice(index, 1); // Remove the destination name from the list array
+            list.splice(index, 1); //uklanja ime destinacije iz liste
           }
         }
       }
     }
     
+    var putRequest = new XMLHttpRequest();
     console.log(newDest);
     for(var groupId in destinations){
       if(groupId === agencies[id]['destinacije']){
@@ -293,8 +293,7 @@ function changeDestinationGroup(destinations,list,ID,id){
     console.log(newDest);
     console.log(destinations[groupId]);
 
-    var putRequest = new XMLHttpRequest();
-    putRequest.open('PUT', firebaseUrl + '/destinacije/' + id + '.json', true);
+    putRequest.open('PUT', firebaseUrl + '/destinacije/' + ID + '.json', true);
     putRequest.setRequestHeader('Content-Type', 'application/json');
     console.log(JSON.stringify(destinations[ID]));
     putRequest.send(JSON.stringify(destinations[ID]));
