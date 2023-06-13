@@ -57,32 +57,17 @@ agencyRequest.onreadystatechange = function() {
             
               button.href += "?id=" + id + "&agencija=" + agency["naziv"] + "&agencijaId=" + urlParams.get('id');
             
-              var found=false;
+
               var tip=document.getElementById("type-search");
-              for(i in tip.options)
-              {
-                  if(tip.options[i].innerText==destination["tip"])
-                  {
-                     found=true; 
-                  }
+              if (!Array.from(tip.options).some((option) => option.innerText === destination["tip"])) {
+                tip.add(new Option(destination["tip"]));
               }
-              if(!found)
-              {
-                  tip.add(new Option(destination["tip"]));
+              
+              var ride=document.getElementById("ride-search");
+              if (!Array.from(ride.options).some((option) => option.innerText === destination["prevoz"])) {
+                ride.add(new Option(destination["prevoz"]));
               }
-              found=false;
-              var prevoz=document.getElementById("ride-search");
-              for(i in prevoz.options)
-              {
-                  if(prevoz.options[i].innerText==destination["prevoz"])
-                  {
-                     found=true; 
-                  }
-              }
-              if(!found)
-              {
-                  prevoz.add(new Option(destination["prevoz"]));
-              }
+              
             }
             
             original.parentNode.removeChild(original.parentNode.firstChild);
@@ -100,7 +85,6 @@ agencyRequest.onreadystatechange = function() {
     }
   }
 };
-
 agencyRequest.open('GET', firebaseUrl + '/agencije/' + id + '.json');
 agencyRequest.send();
 
@@ -118,14 +102,13 @@ function searchDestination(){
       var type=document.getElementById("type-search").options[document.getElementById("type-search").selectedIndex].text;
       var transport=document.getElementById("ride-search").options[document.getElementById("ride-search").selectedIndex].text;
       var destinations = document.getElementById("cards1").parentNode;
-      console.log(destinations);
       var remove = 0;
       console.log(type)
 
       Array.from(destinations.children).forEach((destination) => {
+        var show = true;
         destination.style="display:static";
         if(name.value!='' && name.value!=null){
-          
             var naslov=destination.children[0].children[1].children[0].innerHTML;
             console.log(naslov)
             naslov=naslov.replaceAll('<mark>','');
@@ -135,40 +118,40 @@ function searchDestination(){
                 var regEx=new RegExp(name.value,"ig");
                 let title = naslov.replaceAll(regEx, `<mark>${name.value}</mark>`);
                 destination.children[0].children[1].children[0].innerHTML=title;
-                console.log(title)
-                console.log('proslo')
-              }
-            else
-            {
-              destination.style="display:none";
+                destination.style="display:static";
+              }else {
+                destination.style="display:none";
+                show = false;
             }
         }else{
           if(remove == 0){
             destination.style="display:none";
             remove++;
           }else{
-          destination.children[0].children[1].children[0].innerHTML=destination.children[0].children[1].children[0].innerHTML.replace(/<\/?mark>/g, "");
-          destination.style="display:static";
+            destination.children[0].children[1].children[0].innerHTML=destination.children[0].children[1].children[0].innerHTML.replace(/<\/?mark>/g, "");
+            destination.style="display:static";
           }
         }
 
+        console.log(show)
+        console.log(type)
+        console.log(transport)
 
-
-
-        if(type !="Tip putovanja"){
-          console.log('usao u tip')
+        if(type !="Tip putovanja" && show){
           if(type === destination.getAttribute('tip')){
             destination.style="display:static";
           }else{
             destination.style="display:none";
+            show = false;
           }
         }
-        if(transport != "Vrsta prevoza"){
+        if(transport != "Vrsta prevoza" && show){
           console.log('usao u prevoz')
-          if(destination.getAttribute('prevoz' === transport)){
+          if(destination.getAttribute('prevoz') === transport){
             destination.style="display:static";
           }else{
             destination.style="display:none";
+            show = false;
           }
         }
       });

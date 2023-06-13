@@ -1,9 +1,10 @@
 var firebaseUrl = "https://webprojekat-5430f-default-rtdb.europe-west1.firebasedatabase.app";
-
+var row;
+var requestCounter = 0;
 function registerAgency() {
   var agencies = {};
   var destinations = {};
-
+  
   var rrequest = new XMLHttpRequest();
   rrequest.onreadystatechange = function() {
     if (this.readyState == 4) {
@@ -33,111 +34,127 @@ function registerAgency() {
   arrequest.send();
 
   function handleData() {
-    // Only execute the code when both requests have completed
-    if (Object.keys(destinations).length > 0 && Object.keys(agencies).length > 0) {
-      console.log(destinations);
-      console.log(agencies);
 
-      // Rest of the code that depends on destinations and agencies
-      var createagency = document.getElementById("createagency").value;
-      var createname = document.getElementById("createname").value;
-      var createdata = document.getElementById("createdata").value;
-      var createtype = document.getElementById("createtype").value;
-      var createmax = document.getElementById("createmax").value;
-      var createpic = document.getElementById("createpic").value;
+    requestCounter++;
 
-      console.log(createagency)
+    if (requestCounter < 2) {
+      return;
+    }
 
-      var create = true;
-      var message;
-      var destinationGroup;
+    console.log(destinations);
+    console.log(agencies);
 
-      var list = [];
+    var createagency = document.getElementById("createagency").value;
+    var createname = document.getElementById("createname").value;
+    var createdata = document.getElementById("createdata").value;
+    var createtype = document.getElementById("createtype").value;
+    var createmax = document.getElementById("createmax").value;
+    var createpic = document.getElementById("createpic").value;
+    var createprice = document.getElementById("createprice").value;
+    var createtransport = document.getElementById("createtransport").value;
 
-      for (var id in agencies) {
-        list.push(agencies[id]['naziv']);
-        if (agencies[id]['naziv'] === createagency) {
-          destinationGroup = agencies[id]['destinacije']; // Assuming `id` is the destination group ID within the agencies object
-        }
-      }
+    var create = true;
+    var message;
+    var destinationGroup;
 
-      console.log(destinationGroup);
+    var list = [];
 
-      if (!list.includes(createagency)) {
-        create = false;
-        message = "Unesite postojecu agenciju";
+    for (var id in agencies) {
+      list.push(agencies[id]['naziv']);
+      if (agencies[id]['naziv'] === createagency) {
+        destinationGroup = agencies[id]['destinacije'];
       }
-      if (!createmax.match(/^\d+$/)) {
-        create = false;
-        message = "Broj telefona mora da sadrzi samo cifre";
-      }
-      var pattern = /\.(jpeg|jpg|gif|png)$/i;
-      if(!pattern.test(createpic)){
-        create = false;
-        message = "Unesite sliku"
-      }
-      if (createpic === "" || createpic === null) {
-        create = false;
-        message = "Morate da unesete sliku";
-      }
-      if (createmax === "" || createmax === null) {
-        create = false;
-        message = "Morate da unesete maksimalan broj osoba";
-      }
-      if (createtype === "" || createtype === null) {
-        create = false;
-        message = "Morate da unesete tip ";
-      }
-      if (createdata === "" || createdata === null) {
-        create = false;
-        message = "Morate da unesete opis";
-      }
-      if (createname === "" || createname === null) {
-        create = false;
-        message = "Morate da unesete destinacije";
-      }
-      if (createagency === "" || createagency === null) {
-        create = false;
-        message = "Morate da unesete ime agencije";
-      }
+    }
 
-      if (create) {
-        var confirm = "Uspesno ste se kreirali destinaciju";
-        document.getElementById("popuptitle1").innerHTML = confirm;
-        document.getElementById("proslo1").classList.add("active");
-        document.getElementById("dismiss-popup-btn0.1").addEventListener("click", function() {
-          document.getElementsByClassName("popup")[2].classList.remove("active");
-        });
+    if (!list.includes(createagency)) {
+      create = false;
+      message = "Unesite postojecu agenciju";
+    }
+    if (!createmax.match(/^\d+$/)) {
+      create = false;
+      message = "Broj telefona mora da sadrzi samo cifre";
+    }
+    if (!createprice.match(/^\d+$/)) {
+      create = false;
+      message = "Cena mora da sadrzi samo cifre";
+    }
+    var pattern = /\.(jpeg|jpg|gif|png)$/i;
+    if (!pattern.test(createpic)) {
+      create = false;
+      message = "Unesite sliku";
+    }
+    if (createpic === "" || createpic === null) {
+      create = false;
+      message = "Morate da unesete sliku";
+    }
+    if (createprice === "" || createprice === null) {
+      create = false;
+      message = "Morate da unesete cenu";
+    }
+    if (createtransport === "" || createtransport === null) {
+      create = false;
+      message = "Morate da unesete prevoz";
+    }
+    if (createmax === "" || createmax === null) {
+      create = false;
+      message = "Morate da unesete maksimalan broj osoba";
+    }
+    if (createtype === "" || createtype === null) {
+      create = false;
+      message = "Morate da unesete tip ";
+    }
+    if (createdata === "" || createdata === null) {
+      create = false;
+      message = "Morate da unesete opis";
+    }
+    if (createname === "" || createname === null) {
+      create = false;
+      message = "Morate da unesete destinacije";
+    }
+    if (createagency === "" || createagency === null) {
+      create = false;
+      message = "Morate da unesete ime agencije";
+    }
 
-        var newDest = {
-          'naziv': createname,
-          'opis': createdata,
-          'tip': createtype,
-          'maxOsoba': createmax,
-          'slike': createpic
-        };
+    if (create) {
+      var confirm = "Uspesno ste se kreirali destinaciju";
+      document.getElementById("popuptitle1").innerHTML = confirm;
+      document.getElementById("proslo1").classList.add("active");
+      document.getElementById("dismiss-popup-btn0.1").addEventListener("click", function() {
+        document.getElementsByClassName("popup")[2].classList.remove("active");
+      });
 
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {
-              console.log("Uspesno");
-            } else {
-              window.location.href = "error.html";
-            }
+      var newDest = {
+        'naziv': createname,
+        'opis': createdata,
+        'tip': createtype,
+        'maxOsoba': createmax,
+        'slike': createpic,
+        'cena': createprice,
+        'prevoz': createtransport
+      };
+
+      row.children[5].textContent += ', ' + newDest['naziv'];
+
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            console.log("Uspesno");
+          } else {
+            window.location.href = "error.html";
           }
-        };
-        request.open('POST', firebaseUrl + '/destinacije/' + destinationGroup + '.json');
-        request.send(JSON.stringify(newDest));
-      } else {
-        // Neuspesna registracija
-        document.getElementById("popuptitle1").innerHTML = "Registracija nije uspela";
-        document.getElementById("description5").innerHTML = message;
-        document.getElementById('nijeProslo1').classList.add("active");
-        document.getElementById("dismiss-popup-btn1.1").addEventListener("click", function() {
-          document.getElementsByClassName("popup")[3].classList.remove("active");
-        });
-      }
+        }
+      };
+      request.open('POST', firebaseUrl + '/destinacije/' + destinationGroup + '.json');
+      request.send(JSON.stringify(newDest));
+    } else {
+      document.getElementById("popuptitle1").innerHTML = "Registracija nije uspela";
+      document.getElementById("description5").innerHTML = message;
+      document.getElementById('nijeProslo1').classList.add("active");
+      document.getElementById("dismiss-popup-btn1.1").addEventListener("click", function() {
+        document.getElementsByClassName("popup")[3].classList.remove("active");
+      });
     }
   }
 }

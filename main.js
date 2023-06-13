@@ -74,53 +74,58 @@ function searchAgency() {
 
   search.addEventListener('submit', (e) => {
     e.preventDefault();
-    var naziv = document.getElementById("agency-search");
+    // uzimam podatke iz forme
+    var name = document.getElementById("agency-search");
     var destination = document.getElementById("destination-search");
-    console.log(destination)
-    console.log(destination.value)
-
     var agencije = document.getElementById("cards").parentNode;
-    console.log(naziv);
-    console.log(stop)
-    
+    // remove proverava da li je trenutna kartica prva kartica
+    // ako da display je none
     var remove = 0;
-
+    // show - kako se ne bi prikazale agencije kojima odgovaa uneta destinacija
+    // ali ne i naziv
+    var show = true;
     Array.from(agencije.children).forEach((agency) => {
       agency.style="display:static";
-      if(naziv.value!='' && naziv.value!=null){
-          
-          var naslov=agency.children[0].children[1].children[0].innerHTML;
-          naslov=naslov.replaceAll('<mark>','');
-          naslov=naslov.replaceAll('</mark>','');
-          if(naslov.toLowerCase().includes(naziv.value.toLowerCase()))
+      if(name.value!='' && name.value!=null){
+          var title=agency.children[0].children[1].children[0].innerHTML;
+          title = title.replaceAll('<mark>','');
+          title = title.replaceAll('</mark>','');
+          if(title.toLowerCase().includes(name.value.toLowerCase()))
           {
-              var regEx=new RegExp(naziv.value,"ig");
-              let noviNaslov = naslov.replaceAll(regEx, `<mark>${naziv.value}</mark>`);
-              agency.children[0].children[1].children[0].innerHTML=noviNaslov;
+              var regEx=new RegExp(name.value,"ig");
+              let change = title.replaceAll(regEx, `<mark>${name.value}</mark>`);
+              agency.children[0].children[1].children[0].innerHTML=change;
+              agency.style="display:static";
+              show = true;
           }
           else
           {
-              agency.style="display:none";
+            agency.style="display:none";
+            show = false
           }
-      }else{
+      }
+      // u slucaju kada se klikne pretraga sa prazim podacima treba se resiti kartice
+      // u koju se nista ne ucitava
+      else{
         if(remove == 0){
           agency.style="display:none";
+          show = false
           remove++;
         }else{
-        agency.children[0].children[1].children[0].innerHTML=agency.children[0].children[1].children[0].innerHTML.replace(/<\/?mark>/g, "");
-        agency.style="display:static";
-        }
+            agency.children[0].children[1].children[0].innerHTML=agency.children[0].children[1].children[0].innerHTML.replace(/<\/?mark>/g, "");
+            agency.style="display:static";
+            show = true;
+          }
       }
-      searchDestination(destination,agency);
+      if(show){
+        searchDestination(destination,agency);
+      }
     });
   });
 }
 function searchDestination(destination,agency){
   
   if (destination.value != "" && destination.value != null) {
-
-    console.log(destination)
-
     var request=new XMLHttpRequest();
     var pass = false;
     request.onreadystatechange=function(){

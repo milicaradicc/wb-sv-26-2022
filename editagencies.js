@@ -20,16 +20,17 @@ console.log(agencies);
 var table = document.getElementById("table");
 var body = table.querySelector("tbody");
 var cells;
+var row;
 
 table.addEventListener("click", function(event) {
   var target = event.target;
   if (target.tagName === "TD" && target.parentNode !== body.firstElementChild) {
-    var row = target.parentNode;
+    row = target.parentNode;
     cells = row.getElementsByTagName("td");
     console.log(cells);
 
     var checkboxesContainer = document.getElementById("check");
-    checkboxesContainer.innerHTML = ""; // Clear the container before adding new checkboxes
+    checkboxesContainer.innerHTML = "";
 
     var agencyname = cells[0].innerHTML;
     oldname = cells[0].innerHTML;
@@ -38,16 +39,16 @@ table.addEventListener("click", function(event) {
     var agencyemail = cells[3].innerHTML;
     var agencyphone = cells[4].innerHTML;
     var agencydest = cells[5].innerHTML.split(",").map(item => item.trim());
-    console.log(agencydest);
+    var agencypic = cells[6].innerHTML;
 
-    // Populate form
     document.getElementById("formagencyname").value = agencyname;
     document.getElementById("formagencyadress").value = agencyadress;
     document.getElementById("formagencyyear").value = agencyyear;
     document.getElementById("formagencyemail").value = agencyemail;
     document.getElementById("formagencyphone").value = agencyphone;
+    document.getElementById("formagencypic").value = agencypic;
 
-    var addedDestinations = []; // Track added destination values
+    var addedDestinations = []; 
 
     for (var groupID in destinations) {
       for (var id in destinations[groupID]) {
@@ -83,7 +84,7 @@ table.addEventListener("click", function(event) {
 });
 
 
- function editTableDisplay() {
+function editTableDisplay() {
   document.getElementById("editTable").style.display = "block";
   document.getElementById("createTable").style.display = "none";
 }
@@ -91,6 +92,18 @@ table.addEventListener("click", function(event) {
 function editTableDisplay1() {
   document.getElementById("createTable").style.display = "block";
   document.getElementById("editTable").style.display = "none";
+
+  
+  var table = document.getElementById("table");
+  row;
+  table.addEventListener("click", function(event) {
+    var target = event.target;
+    if (target.tagName === "TD" && target.parentNode !== body.firstElementChild) {
+      row = target.parentNode;
+      console.log(row.children[0].textContent)
+      document.getElementById("createagency").value = row.children[0].textContent;
+    }
+  });
 }
 
 
@@ -127,6 +140,7 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
     var updatedagencyyear = document.getElementById("formagencyyear").value;
     var updatedagencyemail = document.getElementById("formagencyemail").value;
     var updatedagencyphone = document.getElementById("formagencyphone").value;
+    var updatedagencypic = document.getElementById("formagencypic").value;
 
     console.log(updatedagencyname);
 
@@ -184,6 +198,15 @@ document.getElementById("editRowBtn1").addEventListener("click",function(){
             agencies[id]['email'] = updatedagencyemail;
             agencies[id]['naziv'] = updatedagencyname;
             agencies[id]['godina'] = updatedagencyyear;
+            agencies[id]['logo'] = updatedagencypic;
+
+            row.children[0].innerHTML = updatedagencyname;
+            row.children[1].innerHTML = updatedagencyadress;
+            row.children[2].innerHTML = updatedagencyyear;
+            row.children[3].innerHTML = updatedagencyemail;
+            row.children[4].innerHTML = updatedagencyphone;
+            row.children[5].innerHTML = list;
+            row.children[6].innerHTML = updatedagencypic;
 
             changeDestinationGroup(destinations,list, agencies[id]['destinacije'],id);
       
@@ -269,6 +292,7 @@ table.addEventListener("click", function(event) {
 
 function changeDestinationGroup(destinations,list,ID,id){
     var newDest = {}; 
+    console.log(list)
 
     for (var groupId in destinations) {
       for (var Id in destinations[groupId]) {
@@ -292,6 +316,7 @@ function changeDestinationGroup(destinations,list,ID,id){
     }
     console.log(newDest);
     console.log(destinations[groupId]);
+
 
     putRequest.open('PUT', firebaseUrl + '/destinacije/' + ID + '.json', true);
     putRequest.setRequestHeader('Content-Type', 'application/json');

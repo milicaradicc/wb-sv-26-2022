@@ -51,12 +51,14 @@ function processAgencies() {
     var agencyemail = clone.children[3];
     var agencyphone = clone.children[4];
     var agencydestinations = clone.children[5];
+    var agencypic = clone.children[6];
 
     agencyname.innerHTML = agency["naziv"];
     agencyadress.innerHTML = agency["adresa"];
     agencyyear.innerHTML = agency["godina"];
     agencyemail.innerHTML = agency["email"];
     agencyphone.innerHTML = agency["brojTelefona"];
+    agencypic.innerHTML = agency["logo"];
 
     var destinationList = [];
     console.log(destinations)
