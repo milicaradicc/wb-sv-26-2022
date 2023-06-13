@@ -184,23 +184,38 @@
 
     <section>
         <h2 class="tittle">AGENCIJE</h2>
-            <div class="card-container" id="card-container">
-              <div class="cards" id="cards">
-                <div class="card" id="card">
-                  <img class="card-img" alt="">
-                  <div class="card-content">
-                      <h4 class="card-title">test</h4>
-                      <ul>
-                          <li class="list-group-item" class="adress"></li>
-                          <li class="list-group-item" clas="year"></li>
-                          <li class="list-group-item" class="phone"></li>
-                          <li class="list-group-item" class="email"></li>
-                      </ul>                    
-                    <a class="ctn" href="agency_page.html" id="destinationButton">Destinacije</a>
-                  </div>
-                </div>
+
+        <section>
+          <form id="search-form">
+            <div class="form-group">
+              <label for="agency-search">Naziv agencije</label>
+              <input type="text" class="new" id="agency-search" placeholder="Unesite naziv agencije">
+            </div>
+            <div class="form-group">
+              <label for="destination-search">Destinacija</label>
+              <input type="text" class="new" id="destination-search" placeholder="Unesite naziv destinacije">
+            </div>
+            <input type="submit" value="Pretraži" id="search-clear" class="btn btn-primary">
+          </form>          
+        </section>
+        
+          <div class="card-container" id="card-container">
+            <div class="cards" id="cards">
+              <div class="card" id="card">
+                <img class="card-img" alt="">
+                <div class="card-content">
+                  <h4 class="card-title">test</h4>
+                  <ul>
+                    <li class="list-group-item" class="address"></li>
+                    <li class="list-group-item" class="year"></li>
+                    <li class="list-group-item" class="phone"></li>
+                    <li class="list-group-item" class="email"></li>
+                  </ul>                    
+                  <a class="ctn" href="agency_page.html" id="destinationButton">Destinacije</a>
                 </div>
               </div>
+            </div>
+          </div>    
     </section>
 
     <section class="footer">
@@ -226,6 +241,5 @@
     </section>
     <script src="main.js"></script>
     <script src="loginsignin.js"></script>
-    <script src = "agency.js"></script>
 </body>
 </html>
