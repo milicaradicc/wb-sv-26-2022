@@ -65,6 +65,9 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
     var update = true;
     var message;
 
+    var odabraniDatum = new Date(updatedDate);
+    var danas = new Date();
+
     if(updatedAdressClient === "" || updatedAdressClient === null){
         update = false;
         message = "Morate da unesete adresu";
@@ -77,9 +80,9 @@ document.getElementById("editRowBtn").addEventListener("click",function(){
         update = false;
         message = "Morate da unesete broj telefona!";
     }    
-    if (!updatedDate.match(/^\d{4}-\d{2}-\d{2}$/)) {
+    if (odabraniDatum > danas){
         update = false;
-        message = "Unesite validan datum, yyyy/mm/dd";
+        message = "Datum ne sme biti u buducnosti";
     }
     if (updatedDate=== "" || updatedDate === null) {
         update = false;
